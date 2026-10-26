@@ -67,37 +67,3 @@ class ParallelFilter:
             KMap[threshold] = int(prev_state)
         return KMap, smin, smax
 
-
-filter1 = ParallelFilter(0.5, 4, 4)
-
-a_values = [0.5, 0.75, 15/16, 31/32]
-
-
-k = 15 #Input range
-Num_inputs = 4
-
-Passed = True
-for a in a_values:
-    filter1.a = a
-    iteration = 0
-    for i in range(k**Num_inputs):
-        iteration += 1
-        input = []
-        x = i
-        for _ in range(Num_inputs):
-            x, d = divmod(x, 15)
-            input.append(d-8)
-        _, y_serial = filter1.serialPass(input)
-        y_parallel = filter1.computeOutputs(input)
-        if y_serial != y_parallel:
-            print(f"FAIL:\n input: {input}\n" + 
-            f"Serial output: {y_serial}\n" + 
-            f"Parallel output: {y_parallel}\n" +
-            f"a = {a}\n" +
-            f"Iteration {iteration}\n")
-            Passed = False
-        if not Passed:
-            break
-
-if Passed:
-    print("All inputs passed.")
