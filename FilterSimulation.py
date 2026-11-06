@@ -2,8 +2,9 @@ import numpy as np
 import math
 
 class ParallelFilter:
-    def __init__(self, a, P, bits):
-        self.P = P
+    def __init__(self, a, latency, L, bits):
+        self.latency = latency
+        self.L = L
         self.a = a
         self.bits = bits
         self.maxState = 2**(bits-1)-1 
@@ -13,7 +14,7 @@ class ParallelFilter:
             state = s_0
             y = []
             for input in x:
-                state = max(-8, min(7, math.floor(self.a * state) + int(input)))
+                state = max(-2**(self.bits-1), min(2**(self.bits-1)-1, math.floor(self.a * state) + int(input)))
                 y.append(state)
             output_state = state
 
@@ -21,7 +22,7 @@ class ParallelFilter:
     
     def computeOutputs(self, x: list):
         x_np = np.array(x)
-        blocks = np.array_split(x_np, self.P)
+        blocks = np.array_split(x_np, self.latency / self.L)
         kMaps = []
         y = []
 
@@ -52,7 +53,8 @@ class ParallelFilter:
         for i in range(0, len(blocks)):
             y.extend(self.serialPass(blocks[i], s_0=entry_states[i])[1])
 
-        return y
+        max_threshold_count = max([len(Kmap) for Kmap in KMaps])
+        return y, max_threshold_count
 
 
     def buildKMap(self, block: np.ndarray):

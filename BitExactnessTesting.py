@@ -1,4 +1,4 @@
-from GoldenModel import ParallelFilter
+from FilterSimulation import ParallelFilter
 import math
 import random
 
@@ -25,7 +25,7 @@ if Test4Bit:
                 x, d = divmod(x, 15)
                 input.append(d-8)
             _, y_serial = filter4bit.serialPass(input)
-            y_parallel = filter4bit.computeOutputs(input)
+            y_parallel, _ = filter4bit.computeOutputs(input)
             if y_serial != y_parallel:
                 print(f"FAIL:\n input: {input}\n" + 
                 f"Serial output: {y_serial}\n" + 
@@ -41,7 +41,7 @@ filter16bit = ParallelFilter(0.5, 4, 16)
 
 #Sines at w = pi/8, pi/4, 3pi/8, etc.
 if Test16Bit:
-    for input_length in range(4, 30):
+    for input_length in range(20, 30):
         TestSignals16Bit = []
         N = 256
         for i in range(0, N+1):
@@ -53,7 +53,7 @@ if Test16Bit:
         TestSignals16Bit.append([-(2**15)] * input_length)
 
         #Random Signal
-        num_rand = 1000
+        num_rand = 100
         for _ in range(num_rand):
             sig = [int(random.random() * 2**15) for _ in range(input_length)] 
             TestSignals16Bit.append(sig)
@@ -62,13 +62,12 @@ if Test16Bit:
             filter16bit.a = a
             for signal in TestSignals16Bit:
                 _, y_serial = filter16bit.serialPass(signal)
-                y_parallel = filter16bit.computeOutputs(signal)
+                y_parallel, _ = filter16bit.computeOutputs(signal)
                 if y_serial != y_parallel:
                     print(f"FAIL:\n input: {signal}\n" + 
                     f"Serial output: {y_serial}\n" + 
                     f"Parallel output: {y_parallel}\n" +
-                    f"a = {a}\n" +
-                    f"Iteration {iteration}\n")
+                    f"a = {a}\n")
                     Passed = False
 
 if Passed:

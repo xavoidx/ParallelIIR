@@ -6,8 +6,14 @@ The serial case runs at some fixed loop delay, t_loop, where it can only pump ou
 
 The equation L ~= tau * ln(R / K), with tau ~= 1/(1-a), characterizes the required block length for some target number of thresholds K, but is an estimation that is only accurate for larger a. Tau is the time constant of this one pole filter, and thus for low corner frequencies, our a value will be relatively close to one, and tau will be a big number, requiring a greater block size. 
 
-We can then characterize the work W (clock cycles per sample in the length L computed) as W = c + K + 1, with the total chain speedup being P / W. c represents constant overhead that doesn't scale with K, and is ~2-3 samples. It is at least 2 due to the min and max passes, maybe 3 due to some extra implementation-specific overhead. The +1 represents the one replay pass. 
+We can then characterize the work W (clock cycles per sample in the length L computed) as W = c + K + 1, with the total chain speedup being P / W. c represents constant overhead that doesn't scale with K, and is ~2-3 samples. It is at least 2 due to the min and max passes, maybe 3 due to some extra implementation-specific overhead. The + 1 represents the one replay pass. 
 
 This means our latency in seconds is L(P + c + K + 1) * T_s, where P is the number of parallel blocks (where the parallel speedup comes from), and T_s is the sampling period. Thus, we want to keep L low for latency, but we also want to keep K low, as more thresholds means more work needs to be done per block before we can replay them. Each threshold requires its own pass through the block. 
 
 Essentially, we want to have P as high as possible, but that either creates more latency or reduces L---reducing L means increasing K, increasing the work done per sample. The goal here is to find a sweet spot. 
+
+To optimize memory cost of each KMap, you would in theory need only smin, smax, and the list of thresholds. The question though is how to maintain lookup in one clock cycle on the FPGA while still being space efficient. It's evident that for a K-Map of size K, we require K comparators for a block lookup. With K on the order of ~25,000, that gets expensive. 
+
+NEXT GOALS:
+
+Find a headline case that could have some given latency and speedup, implement it. We can build a small python model where the latency target and the a value can be plugged in and that will output the hardware cost for a given speedup. 
