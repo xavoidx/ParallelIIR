@@ -1,0 +1,175 @@
+{
+  "scope": "Constructed scalar model only; no native workload, RTL, advantage or novelty claim",
+  "script_sha256": "4fba71b86860b51e84388a1f034d30d6b61cb1e085d230cab4769267c37769f0",
+  "core_sha256": "5905cb62ca85d447669cadf742e97c1134c4c3386b74e67deedd3cdc5dcda938",
+  "exhaustive": {
+    "blocks": 4080,
+    "exit_peak_forward_alarm_entry_checks": 30600,
+    "backward_alarm_sentinel_entry_checks": 91800
+  },
+  "composition_entry_checks": 6400,
+  "streamed": {
+    "configurations": [
+      {
+        "bits": 8,
+        "a": 3,
+        "d": 4,
+        "rho": 2,
+        "guaranteed_width": 3,
+        "history_samples": 17,
+        "native_updates_per_input_at_L64": 1.53125,
+        "native_updates_per_input_at_L256": 1.1328125
+      },
+      {
+        "bits": 8,
+        "a": 15,
+        "d": 16,
+        "rho": 8,
+        "guaranteed_width": 15,
+        "history_samples": 52,
+        "native_updates_per_input_at_L64": 2.625,
+        "native_updates_per_input_at_L256": 1.40625
+      },
+      {
+        "bits": 8,
+        "a": 63,
+        "d": 64,
+        "rho": 32,
+        "guaranteed_width": 63,
+        "history_samples": 117,
+        "native_updates_per_input_at_L64": 4.65625,
+        "native_updates_per_input_at_L256": 1.9140625
+      },
+      {
+        "bits": 8,
+        "a": 127,
+        "d": 128,
+        "rho": 64,
+        "guaranteed_width": 127,
+        "history_samples": 128,
+        "native_updates_per_input_at_L64": 5.0,
+        "native_updates_per_input_at_L256": 2.0
+      },
+      {
+        "bits": 8,
+        "a": 97,
+        "d": 100,
+        "rho": 50,
+        "guaranteed_width": 33,
+        "history_samples": 83,
+        "native_updates_per_input_at_L64": 3.59375,
+        "native_updates_per_input_at_L256": 1.6484375
+      },
+      {
+        "bits": 16,
+        "a": 3,
+        "d": 4,
+        "rho": 2,
+        "guaranteed_width": 3,
+        "history_samples": 37,
+        "native_updates_per_input_at_L64": 2.15625,
+        "native_updates_per_input_at_L256": 1.2890625
+      },
+      {
+        "bits": 16,
+        "a": 15,
+        "d": 16,
+        "rho": 8,
+        "guaranteed_width": 15,
+        "history_samples": 139,
+        "native_updates_per_input_at_L64": 5.34375,
+        "native_updates_per_input_at_L256": 2.0859375
+      },
+      {
+        "bits": 16,
+        "a": 63,
+        "d": 64,
+        "rho": 32,
+        "guaranteed_width": 63,
+        "history_samples": 477,
+        "native_updates_per_input_at_L64": 15.90625,
+        "native_updates_per_input_at_L256": 4.7265625
+      },
+      {
+        "bits": 16,
+        "a": 127,
+        "d": 128,
+        "rho": 64,
+        "guaranteed_width": 127,
+        "history_samples": 869,
+        "native_updates_per_input_at_L64": 28.15625,
+        "native_updates_per_input_at_L256": 7.7890625
+      },
+      {
+        "bits": 16,
+        "a": 97,
+        "d": 100,
+        "rho": 50,
+        "guaranteed_width": 33,
+        "history_samples": 268,
+        "native_updates_per_input_at_L64": 9.375,
+        "native_updates_per_input_at_L256": 3.09375
+      },
+      {
+        "bits": 32,
+        "a": 3,
+        "d": 4,
+        "rho": 2,
+        "guaranteed_width": 3,
+        "history_samples": 75,
+        "native_updates_per_input_at_L64": 3.34375,
+        "native_updates_per_input_at_L256": 1.5859375
+      },
+      {
+        "bits": 32,
+        "a": 15,
+        "d": 16,
+        "rho": 8,
+        "guaranteed_width": 15,
+        "history_samples": 311,
+        "native_updates_per_input_at_L64": 10.71875,
+        "native_updates_per_input_at_L256": 3.4296875
+      },
+      {
+        "bits": 32,
+        "a": 63,
+        "d": 64,
+        "rho": 32,
+        "guaranteed_width": 63,
+        "history_samples": 1182,
+        "native_updates_per_input_at_L64": 37.9375,
+        "native_updates_per_input_at_L256": 10.234375
+      },
+      {
+        "bits": 32,
+        "a": 127,
+        "d": 128,
+        "rho": 64,
+        "guaranteed_width": 127,
+        "history_samples": 2284,
+        "native_updates_per_input_at_L64": 72.375,
+        "native_updates_per_input_at_L256": 18.84375
+      },
+      {
+        "bits": 32,
+        "a": 97,
+        "d": 100,
+        "rho": 50,
+        "guaranteed_width": 33,
+        "history_samples": 632,
+        "native_updates_per_input_at_L64": 20.75,
+        "native_updates_per_input_at_L256": 5.9375
+      }
+    ],
+    "certified_domains": 171,
+    "exact_observation_triples": 171,
+    "accounting": "Two history endpoint updates per history sample plus one shared-base update per block input; excludes ranks, peak/alarm, lookup, memory, pipeline and I/O. NOT cycles or throughput."
+  },
+  "missed_endpoint_example": {
+    "threshold": 200,
+    "endpoint": 0,
+    "peak": 228,
+    "any_exceedance": true
+  },
+  "peak_contract": "max of post-update states; not entry-inclusive peak, first hit, upcrossing count, dwell time or feedback-triggered reset"
+}

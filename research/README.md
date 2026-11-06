@@ -1,10 +1,12 @@
 # Research assessment of exact parallel quantized filtering
 
-**Latest application pass — video and small FPGAs:** [VIDEO_REVIEW.md](video/VIDEO_REVIEW.md) audits UHD60 spatial/temporal filters, native Arm-2D/VLC arithmetic, VVC/AV1 entropy probability updates, exact row-parallel alternatives and UP5K system limits. It includes reproducible checks and a high-level RTL roadmap. New native matches were found; no application yet passes rate bottleneck, useful bit exactness and complete superiority together.
+**Latest application/conceptual pass — start from small FPGAs:** [SMALL_FPGA_REVIEW.md](small_fpga/SMALL_FPGA_REVIEW.md) widens the search to compact instruments, radios, lock-ins, one-bit sensing and other resource-constrained streams. It prioritizes sparse exact observations of fast inputs, audits actual stage rates, examines shared residual channels, and includes an independently checked exit/peak/alarm prototype and a high-level RTL roadmap. No application yet passes rate bottleneck, useful bit exactness and complete superiority together. [Supporting files](small_fpga/README.md).
 
-**Latest independent audit:** [THIRD_PASS_VERDICT.md](direction/THIRD_PASS_VERDICT.md) records a stronger exact baseline, closer deletion-generator prior art and repaired prototype interfaces. The specified arithmetic survived independent oracle and closed-state checks; novelty and complete performance remain unestablished. The next step is a bounded comparison of shared-base relative ranks, bitmaps, certification and exact unrolling.
+**Previous application pass — video:** [VIDEO_REVIEW.md](video/VIDEO_REVIEW.md) audits UHD60 spatial/temporal filters, native Arm-2D/VLC arithmetic, VVC/AV1 entropy probability updates, exact row-parallel alternatives and UP5K system limits. It includes reproducible checks and a high-level RTL roadmap.
 
-**Latest conceptual follow-up:** [Recommended research direction](direction/RESEARCH_DIRECTION.md) proposes certified boundary intervals and a one-pass forward deletion-mask constructor for exact financial feature replay. It includes a deeper primary-art/application review, adversarial second pass, a new working numerical prototype, fixed-configuration capacity bounds and a rough RTL roadmap. Start there for the current recommendation; the dated reviews below document how it developed. No hardware speedup or actual-market numerical result is claimed.
+**Independent audit of the earlier constructor:** [THIRD_PASS_VERDICT.md](direction/THIRD_PASS_VERDICT.md) records a stronger exact baseline, closer deletion-generator prior art and repaired prototype interfaces. The specified arithmetic survived independent oracle and closed-state checks; novelty and complete performance remain unestablished. Its shared-base ranks, bitmaps and exact-unroll baselines also constrain the new small-device pass.
+
+**Earlier conceptual follow-up:** [Certified-constructor research direction](direction/RESEARCH_DIRECTION.md) proposes certified boundary intervals and a one-pass forward deletion-mask constructor for exact financial feature replay. It includes a deeper primary-art/application review, adversarial second pass, a working numerical prototype, fixed-configuration capacity bounds and a rough RTL roadmap. Read it for the underlying constructor and finance direction; the newer small-device review above changes the application priority and investigates alternative outputs/certificates. No hardware speedup or actual-market numerical result is claimed.
 
 Review date: **4 November 2026**. Project: buffered, bit-exact execution of the scalar recurrence `s'=clip(floor((A*s+C)/D))`, with `0<=A<D`, using compact block maps, exact boundary resolution and replay.
 
@@ -18,7 +20,9 @@ The most promising research claim is: *an efficient exact executor for specified
 
 | File | Purpose |
 |---|---|
-| [direction/RESEARCH_DIRECTION.md](direction/RESEARCH_DIRECTION.md) and [supporting index](direction/README.md) | Latest differentiated conceptual proposal, deeper finance/prior-art reviews, proof/checks, source reading list and RTL direction |
+| [small_fpga/SMALL_FPGA_REVIEW.md](small_fpga/SMALL_FPGA_REVIEW.md) and [supporting index](small_fpga/README.md) | Latest wider search, device-first recommendation, source audits, exact-observation prototype and independent checks |
+| [video/VIDEO_REVIEW.md](video/VIDEO_REVIEW.md) | Video demand, source-level filters and entropy models, exact baselines and small-device constraints |
+| [direction/RESEARCH_DIRECTION.md](direction/RESEARCH_DIRECTION.md) and [supporting index](direction/README.md) | Certified-constructor proposal, deeper finance/prior-art reviews, proof/checks, source reading list and RTL direction |
 | [FINANCIAL_EWMA_REVIEW.md](FINANCIAL_EWMA_REVIEW.md) | Main shareable follow-up: concrete finance applications, faster-than-clock feasibility, new results, reading list and RTL milestones |
 | [FINANCIAL_EWMA_APPLICATIONS.md](FINANCIAL_EWMA_APPLICATIONS.md) | Tick liquidity, price/flow indicators, intensity, datasets and precise workload limitations |
 | [FINANCIAL_EWMA_PRIOR_ART.md](FINANCIAL_EWMA_PRIOR_ART.md) | Native rounded financial arithmetic, piecewise extension, existing FPGA finance and implementation contracts |

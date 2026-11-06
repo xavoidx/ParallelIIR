@@ -1,5 +1,7 @@
 # Application audit: exact buffered scalar recurrence
 
+**Latest broader follow-up, 6 November:** [Small-FPGA-first search](small_fpga/SMALL_FPGA_REVIEW.md) examines compact instruments, radios, lock-ins, narrow sensor streams and resource-sharing alternatives. It introduces a tested exact exit/peak/alarm model for consumers that accept sparse observations, while retaining the original three application gates. This is a changed observable contract where appropriate, not a replacement for consumers that need every sample. No complete application advantage is claimed.
+
 **6 November video follow-up:** [Video and small-FPGA review](video/VIDEO_REVIEW.md) adds native Arm-2D spatial IIR, rounded VLC temporal blur and VVC/AV1 probability adaptation. It separates aggregate UHD60 demand from true serial dependencies and includes exact baseline/system checks. No all-three application win is claimed.
 
 Evidence reviewed 2026-11-04. Scope: one scalar integer state, `s' = clip(floor((A*s+C)/D))`, `0 <= A < D`, overflow-free intermediates, known block inputs, every serial output preserved. Read `SPEC.md` and both supplied October decision/appendix texts. This is an application audit, not a proof that acceleration is useful.

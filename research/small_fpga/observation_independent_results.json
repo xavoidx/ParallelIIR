@@ -1,0 +1,21 @@
+{
+  "scope": "Synthetic scalar integer research model; no RTL, workload fit, formal equivalence, advantage, or novelty claim",
+  "audit_script_sha256": "1167448bcd4924c895c1399f0bae296bb055dcbff27b146d8ac676b4faf1b8c1",
+  "target_script_sha256": "4fba71b86860b51e84388a1f034d30d6b61cb1e085d230cab4769267c37769f0",
+  "core_sha256": "5905cb62ca85d447669cadf742e97c1134c4c3386b74e67deedd3cdc5dcda938",
+  "root_persisted_results_reproduced": true,
+  "seed": 11062026,
+  "random_cases": 12000,
+  "independent_domain_entry_comparisons": 499810,
+  "inverse_cut_boundary_comparisons": 25243,
+  "restricted_image_compositions": 32145,
+  "general_input_history_certificates": 12000,
+  "peak_clamp_regions_exercised": {
+    "above": 14685,
+    "below": 120913,
+    "inside": 91038
+  },
+  "post_update_fixture": "passed",
+  "domain_rejections": "passed",
+  "limitations": "Seeded cases support the derivations; not exhaustive over all configurations. Composition checks compose queries/observables, not a materialized parallel merged-summary circuit. No work counts interpreted as clocks or resource savings."
+}
