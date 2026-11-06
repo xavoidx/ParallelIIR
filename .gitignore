@@ -1,0 +1,6 @@
+/.local-backups/
+/.agents/
+/.codex/
+/.aws/
+__pycache__/
+*.py[cod]

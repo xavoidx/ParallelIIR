@@ -1,0 +1,31 @@
+{
+  "experiment": "AMR-WB Deemph2 inspected-primitive arithmetic model",
+  "coefficient": 22282,
+  "state_interval_inclusive": [
+    -32768,
+    32767
+  ],
+  "inputs": [
+    -32768,
+    -32767,
+    -1,
+    0,
+    1,
+    16000,
+    32766,
+    32767
+  ],
+  "comparisons": 524288,
+  "differences": 0,
+  "first_difference": null,
+  "reference_formula": "floor(sat32(sat32(32768*x+2*mu*s)+32768)/65536)",
+  "reduced_formula": "sat16(floor((mu*s+16384*x+16384)/32768))",
+  "sources": {
+    "deemph2": "https://android.googlesource.com/platform/frameworks/av/%2B/dd833ba601e642d72da2200a2fd9c3fa1cb69d2d/media/module/codecs/amrwb/enc/src/deemph.c",
+    "primitives": "https://android.1.googlesource.com/platform/frameworks/av/%2B/7aeb9029d26cde995cb6f76748ebe36c7bdc9be3/media/module/codecs/amrwb/enc/inc/basic_op.h",
+    "caller": "https://android.googlesource.com/platform/frameworks/av/%2B/1e6a675fccdc37afcfb337f8fa97d1ddab90adf0/media/codecs/amrwb/enc/src/voAMRWBEnc.c"
+  },
+  "source_reading": "Indexed source bodies at different AOSP revisions; no consistent release compiled.",
+  "scope": "All 65536 states at eight selected inputs; not all input-state pairs; mathematical model only.",
+  "native_compiled_conformance": false
+}
