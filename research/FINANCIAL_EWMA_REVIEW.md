@@ -1,5 +1,7 @@
 # Financial EWMA and the small-FPGA opportunity
 
+**Later conceptual follow-up:** [RESEARCH_DIRECTION.md](direction/RESEARCH_DIRECTION.md) develops a more specific constructor: certified narrow entry domains plus forward deletion masks. This addresses the original algorithm's many inverse passes and long-block dependence. Its numerical prototype and analytical capacity bounds are new; hardware performance and actual-market validation remain open. The report below is the earlier financial feasibility assessment of the original construction.
+
 6 November 2026. Follow-up to the original literature review, prepared on branch `fried`. This is the main shareable financial report; the linked application, arithmetic and device notes supply deeper source audits. New experiments below are exact-integer software checks with synthetic inputs. No exchange capture, financial backtest, synthesis, placement/routing or board measurement was performed.
 
 ## Conclusion

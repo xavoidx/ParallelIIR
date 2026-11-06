@@ -1,0 +1,347 @@
+{
+  "subject_sha256": "5905cb62ca85d447669cadf742e97c1134c4c3386b74e67deedd3cdc5dcda938",
+  "seed": 99154061,
+  "checks_passed": {
+    "primitive_cases": 17780,
+    "primitive_entries": 107660,
+    "traces": 15962,
+    "candidate_entries": 319974,
+    "rational_boundaries": 44906,
+    "replay_outputs": 58766,
+    "carry_graph_configs": 24,
+    "carry_graph_states": 971,
+    "carry_graph_edges": 10090
+  },
+  "exhaustive_closed_carry_graphs": [
+    {
+      "a": 1,
+      "d": 2,
+      "bits": 1,
+      "offset": 0,
+      "length": 1,
+      "p": 1,
+      "fraction_bits": 2,
+      "reachable_carries": 9,
+      "labels": 2,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 1,
+      "d": 2,
+      "bits": 1,
+      "offset": 0,
+      "length": 1,
+      "p": 3,
+      "fraction_bits": 2,
+      "reachable_carries": 17,
+      "labels": 8,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 1,
+      "d": 2,
+      "bits": 1,
+      "offset": 0,
+      "length": 2,
+      "p": 2,
+      "fraction_bits": 3,
+      "reachable_carries": 33,
+      "labels": 16,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 1,
+      "d": 2,
+      "bits": 1,
+      "offset": 1,
+      "length": 1,
+      "p": 1,
+      "fraction_bits": 2,
+      "reachable_carries": 12,
+      "labels": 2,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 1,
+      "d": 2,
+      "bits": 1,
+      "offset": 1,
+      "length": 1,
+      "p": 3,
+      "fraction_bits": 2,
+      "reachable_carries": 24,
+      "labels": 8,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 1,
+      "d": 2,
+      "bits": 1,
+      "offset": 1,
+      "length": 2,
+      "p": 2,
+      "fraction_bits": 3,
+      "reachable_carries": 44,
+      "labels": 16,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 1,
+      "d": 3,
+      "bits": 1,
+      "offset": 0,
+      "length": 1,
+      "p": 1,
+      "fraction_bits": 2,
+      "reachable_carries": 11,
+      "labels": 2,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 1,
+      "d": 3,
+      "bits": 1,
+      "offset": 0,
+      "length": 1,
+      "p": 3,
+      "fraction_bits": 2,
+      "reachable_carries": 13,
+      "labels": 8,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 1,
+      "d": 3,
+      "bits": 1,
+      "offset": 0,
+      "length": 2,
+      "p": 2,
+      "fraction_bits": 3,
+      "reachable_carries": 17,
+      "labels": 16,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 1,
+      "d": 3,
+      "bits": 1,
+      "offset": 2,
+      "length": 1,
+      "p": 1,
+      "fraction_bits": 2,
+      "reachable_carries": 22,
+      "labels": 2,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 1,
+      "d": 3,
+      "bits": 1,
+      "offset": 2,
+      "length": 1,
+      "p": 3,
+      "fraction_bits": 2,
+      "reachable_carries": 24,
+      "labels": 8,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 1,
+      "d": 3,
+      "bits": 1,
+      "offset": 2,
+      "length": 2,
+      "p": 2,
+      "fraction_bits": 3,
+      "reachable_carries": 22,
+      "labels": 16,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 2,
+      "d": 3,
+      "bits": 1,
+      "offset": 0,
+      "length": 1,
+      "p": 1,
+      "fraction_bits": 2,
+      "reachable_carries": 20,
+      "labels": 2,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 2,
+      "d": 3,
+      "bits": 1,
+      "offset": 0,
+      "length": 1,
+      "p": 3,
+      "fraction_bits": 2,
+      "reachable_carries": 37,
+      "labels": 8,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 2,
+      "d": 3,
+      "bits": 1,
+      "offset": 0,
+      "length": 2,
+      "p": 2,
+      "fraction_bits": 3,
+      "reachable_carries": 36,
+      "labels": 16,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 2,
+      "d": 3,
+      "bits": 1,
+      "offset": 2,
+      "length": 1,
+      "p": 1,
+      "fraction_bits": 2,
+      "reachable_carries": 42,
+      "labels": 2,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 2,
+      "d": 3,
+      "bits": 1,
+      "offset": 2,
+      "length": 1,
+      "p": 3,
+      "fraction_bits": 2,
+      "reachable_carries": 143,
+      "labels": 8,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 2,
+      "d": 3,
+      "bits": 1,
+      "offset": 2,
+      "length": 2,
+      "p": 2,
+      "fraction_bits": 3,
+      "reachable_carries": 58,
+      "labels": 16,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 3,
+      "d": 4,
+      "bits": 1,
+      "offset": 0,
+      "length": 1,
+      "p": 1,
+      "fraction_bits": 2,
+      "reachable_carries": 13,
+      "labels": 2,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 3,
+      "d": 4,
+      "bits": 1,
+      "offset": 0,
+      "length": 1,
+      "p": 3,
+      "fraction_bits": 2,
+      "reachable_carries": 28,
+      "labels": 8,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 3,
+      "d": 4,
+      "bits": 1,
+      "offset": 0,
+      "length": 2,
+      "p": 2,
+      "fraction_bits": 3,
+      "reachable_carries": 55,
+      "labels": 16,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 3,
+      "d": 4,
+      "bits": 1,
+      "offset": 3,
+      "length": 1,
+      "p": 1,
+      "fraction_bits": 2,
+      "reachable_carries": 24,
+      "labels": 2,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 3,
+      "d": 4,
+      "bits": 1,
+      "offset": 3,
+      "length": 1,
+      "p": 3,
+      "fraction_bits": 2,
+      "reachable_carries": 127,
+      "labels": 8,
+      "mask_width_cap": 1
+    },
+    {
+      "a": 3,
+      "d": 4,
+      "bits": 1,
+      "offset": 3,
+      "length": 2,
+      "p": 2,
+      "fraction_bits": 3,
+      "reachable_carries": 140,
+      "labels": 16,
+      "mask_width_cap": 1
+    }
+  ],
+  "api_observations": {
+    "float_rule_accepted": {
+      "exception": "ValueError",
+      "message": "a must be an integer"
+    },
+    "out_of_domain_evaluation": {
+      "exception": "ValueError",
+      "message": "Map query is outside its certified entry domain"
+    },
+    "large_word_capacity": {
+      "returned": {
+        "finite_carry_bound": true,
+        "mask_width_cap": 179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137215,
+        "max_deletions_cap": 89884656743115795386465259539451236680898848947115328636715040578866337902750481566354238661203768010560056939935696678829394884407208311246423715319737062188883946712432742638151109800623047059726541476042502884419075341171231440736956555270413618581675255342293149119973622969239858152417678164812112068608,
+        "predictor_width_bound_exact": {
+          "numerator": 359538626972463181545861038157804946723595395788461314546860162315465351611001926265416954644815072042240227759742786715317579537628833244985694861278948248755535786849730970552604439202492188238906165904170011537676301364684925762947826221081654474326701021369172596479894491876959432609670712659248448274437,
+          "denominator": 1
+        },
+        "carry_width_bound_exact": {
+          "numerator": 359538626972463181545861038157804946723595395788461314546860162315465351611001926265416954644815072042240227759742786715317579537628833244985694861278948248755535786849730970552604439202492188238906165904170011537676301364684925762947826221081654474326701021369172596479894491876959432609670712659248448274436,
+          "denominator": 1
+        },
+        "predictor_width_bound_state_units": null,
+        "carry_width_bound_state_units": null,
+        "scope": "all bounded inputs, fixed coefficient, fixed full groups, specified outward arithmetic"
+      }
+    },
+    "zero_group_capacity": {
+      "exception": "ValueError",
+      "message": "group_size must be an integer >= 1"
+    }
+  },
+  "optimized_api_regressions": {
+    "interpreter_flags": [
+      "-O"
+    ],
+    "invalid_inputs_rejected": 7,
+    "domain_substitution_rejected": true,
+    "overlarge_allocation_rejected": true,
+    "exact_overflow_display_check": true
+  },
+  "limits": "Finite configurations and finite exhaustive graphs; general proof obligations are in INDEPENDENT_MATH_AUDIT.md."
+}

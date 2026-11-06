@@ -1,5 +1,9 @@
 # Research assessment of exact parallel quantized filtering
 
+**Latest independent audit:** [THIRD_PASS_VERDICT.md](direction/THIRD_PASS_VERDICT.md) records a stronger exact baseline, closer deletion-generator prior art and repaired prototype interfaces. The specified arithmetic survived independent oracle and closed-state checks; novelty and complete performance remain unestablished. The next step is a bounded comparison of shared-base relative ranks, bitmaps, certification and exact unrolling.
+
+**Latest conceptual follow-up:** [Recommended research direction](direction/RESEARCH_DIRECTION.md) proposes certified boundary intervals and a one-pass forward deletion-mask constructor for exact financial feature replay. It includes a deeper primary-art/application review, adversarial second pass, a new working numerical prototype, fixed-configuration capacity bounds and a rough RTL roadmap. Start there for the current recommendation; the dated reviews below document how it developed. No hardware speedup or actual-market numerical result is claimed.
+
 Review date: **4 November 2026**. Project: buffered, bit-exact execution of the scalar recurrence `s'=clip(floor((A*s+C)/D))`, with `0<=A<D`, using compact block maps, exact boundary resolution and replay.
 
 **6 November follow-up:** [Financial EWMA and the small-FPGA opportunity](FINANCIAL_EWMA_REVIEW.md) corrects the original finance search's narrow scope. Native rounded financial FPGA EMAs exist, and tick-level liquidity smoothing supplies a useful proposed integer application. The follow-up includes an iCE40UP5K resource/interface audit, actual exchange capacity targets, new exact-integer checks, and a financial RTL roadmap. Buffered replay is a credible starting point; a complete faster-than-clock UP5K advantage remains unmeasured. The fetched `FilterSimulation.py` also fixes the old four-bit clipping defect described below; those original audit findings are historical.
@@ -12,6 +16,7 @@ The most promising research claim is: *an efficient exact executor for specified
 
 | File | Purpose |
 |---|---|
+| [direction/RESEARCH_DIRECTION.md](direction/RESEARCH_DIRECTION.md) and [supporting index](direction/README.md) | Latest differentiated conceptual proposal, deeper finance/prior-art reviews, proof/checks, source reading list and RTL direction |
 | [FINANCIAL_EWMA_REVIEW.md](FINANCIAL_EWMA_REVIEW.md) | Main shareable follow-up: concrete finance applications, faster-than-clock feasibility, new results, reading list and RTL milestones |
 | [FINANCIAL_EWMA_APPLICATIONS.md](FINANCIAL_EWMA_APPLICATIONS.md) | Tick liquidity, price/flow indicators, intensity, datasets and precise workload limitations |
 | [FINANCIAL_EWMA_PRIOR_ART.md](FINANCIAL_EWMA_PRIOR_ART.md) | Native rounded financial arithmetic, piecewise extension, existing FPGA finance and implementation contracts |
