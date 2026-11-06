@@ -1,0 +1,79 @@
+{
+  "scope": "Synthetic source-expression equivalence; no compiled codec, real tape, RTL or speed measurement",
+  "vvc_source_commit": "6441f64f9997e9ab8a12d4ac600998a104aa5ddf",
+  "vvc_header_blob": "c495aebabd519f41f3926fd9169766eb0ed90d01",
+  "vvc_tables_blob": "7ffa2dca2e5f3c4f79ba9dfa154fc791a16b15f2",
+  "core_sha256": "5905cb62ca85d447669cadf742e97c1134c4c3386b74e67deedd3cdc5dcda938",
+  "audit_sha256": "2209a1d335df626e579464fb3300dd02a127627b7add92c8be466aaf757d6ee2",
+  "vvc": {
+    "primitive_comparisons": 172032,
+    "traces": 36,
+    "certified_boundaries": 324,
+    "local_map_candidates": 33424,
+    "replay_outputs": 4644,
+    "configurations": [
+      {
+        "state_bits": 10,
+        "shift": 2,
+        "ideal_floor_error_width": 3,
+        "observed_certificate_width": 3
+      },
+      {
+        "state_bits": 10,
+        "shift": 3,
+        "ideal_floor_error_width": 7,
+        "observed_certificate_width": 7
+      },
+      {
+        "state_bits": 10,
+        "shift": 4,
+        "ideal_floor_error_width": 15,
+        "observed_certificate_width": 14
+      },
+      {
+        "state_bits": 10,
+        "shift": 5,
+        "ideal_floor_error_width": 31,
+        "observed_certificate_width": 30
+      },
+      {
+        "state_bits": 14,
+        "shift": 5,
+        "ideal_floor_error_width": 31,
+        "observed_certificate_width": 30
+      },
+      {
+        "state_bits": 14,
+        "shift": 6,
+        "ideal_floor_error_width": 63,
+        "observed_certificate_width": 62
+      },
+      {
+        "state_bits": 14,
+        "shift": 7,
+        "ideal_floor_error_width": 127,
+        "observed_certificate_width": 126
+      },
+      {
+        "state_bits": 14,
+        "shift": 8,
+        "ideal_floor_error_width": 255,
+        "observed_certificate_width": 254
+      },
+      {
+        "state_bits": 14,
+        "shift": 9,
+        "ideal_floor_error_width": 511,
+        "observed_certificate_width": 510
+      }
+    ]
+  },
+  "av1": {
+    "primitive_comparisons": 262152,
+    "adjacent_differences": 262144,
+    "rate_cases": 495,
+    "variable_maps": 120,
+    "variable_map_entry_comparisons": 7680,
+    "certificate_claim": "none: variable offset/rate requires a separate bound"
+  }
+}

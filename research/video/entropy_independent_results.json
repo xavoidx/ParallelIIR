@@ -1,0 +1,108 @@
+{
+  "scope": "Synthetic source-expression and summary-resolved replay checks only; no compiled codec, fraction-bit lookup, accumulated RDO costs, real trace, RTL, speed or whole-codec equivalence",
+  "vvc_source_commit": "6441f64f9997e9ab8a12d4ac600998a104aa5ddf",
+  "vvc_header_blob": "c495aebabd519f41f3926fd9169766eb0ed90d01",
+  "vvc_tables_blob": "7ffa2dca2e5f3c4f79ba9dfa154fc791a16b15f2",
+  "source_reading": "Pinned header and cpp fetched separately through GitHub connector; native update constants transcribed here and checked against documented table formula",
+  "av1_source": "https://aomediacodec.github.io/av1-spec/#symbol-decoding-process",
+  "core_sha256": "5905cb62ca85d447669cadf742e97c1134c4c3386b74e67deedd3cdc5dcda938",
+  "audit_sha256": "2f1bcfa39377ec31d61cae991b1172afabbe8f5d9d99b7c792a4a3cc548c797a",
+  "vvc": {
+    "configured_rate_pairs": [
+      {
+        "window": 0,
+        "rate0": 2,
+        "rate1": 5
+      },
+      {
+        "window": 1,
+        "rate0": 2,
+        "rate1": 6
+      },
+      {
+        "window": 2,
+        "rate0": 2,
+        "rate1": 7
+      },
+      {
+        "window": 3,
+        "rate0": 2,
+        "rate1": 8
+      },
+      {
+        "window": 4,
+        "rate0": 3,
+        "rate1": 6
+      },
+      {
+        "window": 5,
+        "rate0": 3,
+        "rate1": 7
+      },
+      {
+        "window": 6,
+        "rate0": 3,
+        "rate1": 8
+      },
+      {
+        "window": 7,
+        "rate0": 3,
+        "rate1": 9
+      },
+      {
+        "window": 8,
+        "rate0": 4,
+        "rate1": 7
+      },
+      {
+        "window": 9,
+        "rate0": 4,
+        "rate1": 8
+      },
+      {
+        "window": 10,
+        "rate0": 4,
+        "rate1": 9
+      },
+      {
+        "window": 12,
+        "rate0": 5,
+        "rate1": 8
+      },
+      {
+        "window": 13,
+        "rate0": 5,
+        "rate1": 9
+      }
+    ],
+    "native_table_entries": 32,
+    "conditional_complement_state_cases": 86016,
+    "traces": 52,
+    "trace_length": 128,
+    "initialization": "packed (16384,16384)",
+    "summary_resolved_boundaries": 832,
+    "native_packed_lane_checks": 13312,
+    "pre_update_combined_index_checks": 6656,
+    "observed_certificate_widths": {
+      "b10_k2": 3,
+      "b14_k5": 30,
+      "b14_k6": 62,
+      "b14_k7": 126,
+      "b14_k8": 254,
+      "b10_k3": 7,
+      "b14_k9": 511,
+      "b10_k4": 14,
+      "b10_k5": 30
+    },
+    "excluded": "fraction-bit table values/accumulated costs, compiled codec, default rate0=0, real traces, RTL, throughput"
+  },
+  "av1": {
+    "forward_inverse_formula_cases": 262152,
+    "inclusive_state_domain": [
+      0,
+      32768
+    ],
+    "unsigned_storage_bits": 16,
+    "excluded": "full CDF vectors, syntax/context selection, counts/resets/update-disable flags, certificate theorem, range coder and whole-codec equivalence"
+  }
+}

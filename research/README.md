@@ -1,5 +1,7 @@
 # Research assessment of exact parallel quantized filtering
 
+**Latest application pass — video and small FPGAs:** [VIDEO_REVIEW.md](video/VIDEO_REVIEW.md) audits UHD60 spatial/temporal filters, native Arm-2D/VLC arithmetic, VVC/AV1 entropy probability updates, exact row-parallel alternatives and UP5K system limits. It includes reproducible checks and a high-level RTL roadmap. New native matches were found; no application yet passes rate bottleneck, useful bit exactness and complete superiority together.
+
 **Latest independent audit:** [THIRD_PASS_VERDICT.md](direction/THIRD_PASS_VERDICT.md) records a stronger exact baseline, closer deletion-generator prior art and repaired prototype interfaces. The specified arithmetic survived independent oracle and closed-state checks; novelty and complete performance remain unestablished. The next step is a bounded comparison of shared-base relative ranks, bitmaps, certification and exact unrolling.
 
 **Latest conceptual follow-up:** [Recommended research direction](direction/RESEARCH_DIRECTION.md) proposes certified boundary intervals and a one-pass forward deletion-mask constructor for exact financial feature replay. It includes a deeper primary-art/application review, adversarial second pass, a new working numerical prototype, fixed-configuration capacity bounds and a rough RTL roadmap. Start there for the current recommendation; the dated reviews below document how it developed. No hardware speedup or actual-market numerical result is claimed.

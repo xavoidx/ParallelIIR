@@ -1,5 +1,7 @@
 # Application audit: exact buffered scalar recurrence
 
+**6 November video follow-up:** [Video and small-FPGA review](video/VIDEO_REVIEW.md) adds native Arm-2D spatial IIR, rounded VLC temporal blur and VVC/AV1 probability adaptation. It separates aggregate UHD60 demand from true serial dependencies and includes exact baseline/system checks. No all-three application win is claimed.
+
 Evidence reviewed 2026-11-04. Scope: one scalar integer state, `s' = clip(floor((A*s+C)/D))`, `0 <= A < D`, overflow-free intermediates, known block inputs, every serial output preserved. Read `SPEC.md` and both supplied October decision/appendix texts. This is an application audit, not a proof that acceleration is useful.
 
 **Financial follow-up, 6 November:** the original finance search below was too narrow. [FINANCIAL_EWMA_REVIEW.md](FINANCIAL_EWMA_REVIEW.md) documents native rounded financial FPGA EMAs, quote-time liquidity smoothing, tick-price and flow features, actual feed-capacity targets, and conditional small-FPGA feasibility. A proposed integer implementation of a useful financial estimator is a legitimate application candidate even without a legacy bit-exact requirement. It must be validated for accuracy and system value. Native compatibility and measured advantage remain separate questions.

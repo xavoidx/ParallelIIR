@@ -1,0 +1,65 @@
+{
+  "arm_gray8": {
+    "affine_model": "(d*s + (256-d)*x) // 256",
+    "byte_invariant_checks": 16711680,
+    "coefficient_inclusive": [
+      1,
+      255
+    ],
+    "enumerated_cases": 16711680,
+    "literal_model": "s + (((x-s)*(256-d)) >> 8)",
+    "native_affine_equalities": 16711680,
+    "parameter_note": "Nonzero byte degrees; documented blur range is 128..239. Degree zero bypass is not modeled.",
+    "pixel_inclusive": [
+      0,
+      255
+    ],
+    "source_blob_sha": "a771c931427c41b55ae7235eed2e02c6eb3c6921",
+    "source_url": "https://github.com/ARM-software/Arm-2D/blob/26c3b341703a21b241586eec8ddc753931b66e76/Library/Source/__arm_2d_filter_iir_blur.c",
+    "state_inclusive": [
+      0,
+      255
+    ],
+    "status": "passed"
+  },
+  "model_assumptions": [
+    "Arm signed right shift rounds toward negative infinity",
+    "Arm C int can represent all modeled intermediates (32-bit target)",
+    "No overflow or saturation; coefficient fixed for each checked update",
+    "Stored state and input byte are both in [0,255]"
+  ],
+  "not_verified": [
+    "Original C compilation or execution",
+    "Compiler/ABI signed-shift and integer-promotion behavior",
+    "Helium or other SIMD backend equivalence",
+    "Image boundaries, pass ordering, framebuffer tiles, or resets",
+    "ParallelIIR certificates, constructors, replay, or hardware",
+    "Frame rate, clock rate, resources, energy, or performance advantage"
+  ],
+  "schema_version": 1,
+  "scope": "Exhaustive scalar integer-expression and range checks only.",
+  "script_sha256": "837abd8ce5b392aee8ccec279e826ebe2cf132e09c559d5c020a29ec519eb243",
+  "vlc_motionblur": {
+    "affine_model": "(f*s + (128-f)*x + 64) // 128",
+    "byte_invariant_checks": 8323072,
+    "coefficient_inclusive": [
+      1,
+      127
+    ],
+    "enumerated_cases": 8323072,
+    "literal_model": "(s*f + (1 << 7 >> 1) + x*(128-f)) >> 7",
+    "native_affine_equalities": 8323072,
+    "parameter_note": "All configured factor values 1..127; default is 80.",
+    "pixel_inclusive": [
+      0,
+      255
+    ],
+    "source_blob_sha": "4e2d95def93f10bb01505e6ce533f70d60de5e24",
+    "source_url": "https://github.com/videolan/vlc/blob/6bfcad4267f57f1e487503f4da16b033be01e3ca/modules/video_filter/motionblur.c",
+    "state_inclusive": [
+      0,
+      255
+    ],
+    "status": "passed"
+  }
+}
