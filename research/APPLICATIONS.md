@@ -2,6 +2,8 @@
 
 Evidence reviewed 2026-11-04. Scope: one scalar integer state, `s' = clip(floor((A*s+C)/D))`, `0 <= A < D`, overflow-free intermediates, known block inputs, every serial output preserved. Read `SPEC.md` and both supplied October decision/appendix texts. This is an application audit, not a proof that acceleration is useful.
 
+**Financial follow-up, 6 November:** the original finance search below was too narrow. [FINANCIAL_EWMA_REVIEW.md](FINANCIAL_EWMA_REVIEW.md) documents native rounded financial FPGA EMAs, quote-time liquidity smoothing, tick-price and flow features, actual feed-capacity targets, and conditional small-FPGA feasibility. A proposed integer implementation of a useful financial estimator is a legitimate application candidate even without a legacy bit-exact requirement. It must be validated for accuracy and system value. Native compatibility and measured advantage remain separate questions.
+
 **Finding: no reviewed application establishes all four requirements simultaneously: native matching integer semantics, acceptable buffering, a demonstrated single-stream bottleneck, and a requirement unmet by simpler exact hardware.** AMR-WB de-emphasis provides the strongest exactness motivation, UKUI exponential blur provides a concrete source-level recurrence, and SiPM waveform synthesis provides a physical fast-stream lead. They serve different experimental purposes; none yet passes the complete application gate.
 
 ## Ranked leads and exclusions
@@ -57,7 +59,7 @@ CMSIS Q15 DF1 is a useful exact hardware/software baseline framework: the standa
 
 An audio attack/release detector that chooses its coefficient by comparing input with unresolved envelope state is outside the fixed known-coefficient update. A fixed smoothing stage after rectification can fit, but this audit found no primary implementation simultaneously establishing its arithmetic and single-stream throughput need. Audio-rate channel replication is not evidence of accelerating one stream.
 
-RiskMetrics documents EWMA decay choices including .94 and .97 and historical daily observations. This establishes a mathematical scalar recurrence, not native integer floor-and-clip semantics or a high-rate dependency bottleneck. A newly quantized finance benchmark would be a synthetic workload unless an actual integer production implementation and compatibility requirement are obtained. [A9](https://www.msci.com/documents/10199/5915b101-4206-4ba0-aee2-3449d5c7e95a)
+RiskMetrics documents EWMA decay choices including .94 and .97 and historical daily observations. This establishes a mathematical scalar recurrence, not native integer floor-and-clip semantics or a high-rate dependency bottleneck. [A9](https://www.msci.com/documents/10199/5915b101-4206-4ba0-aee2-3449d5c7e95a) **Correction, 6 November:** that limited example does not justify excluding finance. The deeper review found native rounded integer implementations and tick-level features. A new integer port is a proposed numerical implementation, not automatically a synthetic application; real data and application accuracy must be evaluated separately from exact execution of its chosen arithmetic. See [the financial review](FINANCIAL_EWMA_REVIEW.md).
 
 ## Public stimuli and an exact experiment
 

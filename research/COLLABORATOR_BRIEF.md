@@ -2,6 +2,8 @@
 
 Prepared 6 November 2026 from the literature review and software checks completed on 4 November 2026. This document is self-contained so it can be shared as an email attachment. Literature findings retain the reading limits of that review; this is a consolidation, not a new literature search or hardware evaluation.
 
+**Later 6 November update:** a deeper financial review is available as a second self-contained attachment, [FINANCIAL_EWMA_REVIEW.md](FINANCIAL_EWMA_REVIEW.md). It corrects the earlier finance assessment: native rounded FPGA EMAs and published tick-level liquidity estimators are concrete candidates. It adds primary literature, exact-arithmetic checks, actual feed-capacity figures, an iCE40UP5K feasibility assessment and a finance-specific RTL roadmap. Buffered replay is the strongest initial experiment; useful faster-than-clock execution on that device remains a hypothesis requiring full-system measurements. The fetched implementation has also fixed the old hard-coded four-bit clipping defect; descriptions of that defect below refer to the earlier inspected version.
+
 ## Where the project stands
 
 The project asks whether we can process one buffered recursive signal faster while producing exactly the same integer outputs as the original serial filter. The proposed approach summarizes each input block as a compact function of its starting state, uses those summaries to determine the correct block boundaries, and then replays the blocks in parallel.
@@ -80,7 +82,7 @@ The older internal documents report additional validation, but the underlying ar
 
 ### Reference-model issues to fix before using it for RTL
 
-In the version inspected, `GoldenModel.py` accepts a configurable state width but clips every forward update to **[-8, 7]**. Consequently the nominal 16-bit test compares two versions of a four-bit-clipped recurrence. For input [100, 0, 0] at coefficient 1/2, it returns [7, 3, 1]; the intended 16-bit result is [100, 50, 25].
+In the **4 November version inspected**, `GoldenModel.py` accepted a configurable state width but clipped every forward update to **[-8, 7]**. Consequently the nominal 16-bit test compared two versions of a four-bit-clipped recurrence. For input [100, 0, 0] at coefficient 1/2, it returned [7, 3, 1]; the intended 16-bit result was [100, 50, 25]. **This defect is fixed in the subsequently fetched `FilterSimulation.py`, which uses configured bounds.** This brief preserves the earlier audit rather than asserting a new audit of all upstream changes.
 
 The testbench also omits +7 from its four-bit input alphabet, generates only nonnegative random samples, and can reference an undefined diagnostic variable on the enabled failure path. Coefficients and signed rounding should be made explicit in an integer reference before generalizing beyond the currently tested values.
 

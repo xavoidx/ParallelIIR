@@ -1,0 +1,572 @@
+{
+  "description": "Exact integer checks; synthetic stimuli; no hardware or financial backtest",
+  "seed": 20261106,
+  "passed": {
+    "inverse_comparisons": 10080,
+    "adjacent_pairs": 4960,
+    "width_bound_checks": 152064,
+    "block_entry_comparisons": 16384,
+    "replay_output_comparisons": 2912
+  },
+  "assumptions": [
+    "Unsigned [0,2**bits-1] price/state, wide exact intermediates; convex maps need no clip",
+    "Full legal entry-state domain, not an observed local range",
+    "K is image width / number of thresholds, not number of image states",
+    "Rate model P/(K+3) assumes equal one-cycle forward/inverse transitions and no overhead",
+    "Bound plateaus are conservative guarantees, not predicted typical K",
+    "One synthetic trace per pattern; 32 uniform blocks give a separate small sample",
+    "Proposed fixed-point contracts do not preserve original float/decimal arithmetic"
+  ],
+  "contracts": [
+    {
+      "name": "fast_half",
+      "bits": 16,
+      "A": 1,
+      "D": 2,
+      "rounding_offset": 0,
+      "piecewise": false,
+      "status": "synthetic favorable control",
+      "bound_at_L": {
+        "16": 1,
+        "64": 1,
+        "256": 1,
+        "1024": 1,
+        "4096": 1
+      },
+      "bound_plateau_K": 1,
+      "first_L_at_bound_plateau": 16,
+      "ideal_eight_worker_rate_over_clock_at_bound": 2.0,
+      "workers_for_two_events_per_clock_at_bound_no_overheads": 8,
+      "synthetic_endpoint_K": {
+        "constant_midpoint": {
+          "16": 1,
+          "64": 1,
+          "256": 1,
+          "1024": 1,
+          "4096": 1
+        },
+        "one_tick_random_walk": {
+          "16": 1,
+          "64": 0,
+          "256": 0,
+          "1024": 0,
+          "4096": 0
+        },
+        "alternating_rails": {
+          "16": 1,
+          "64": 1,
+          "256": 1,
+          "1024": 1,
+          "4096": 1
+        },
+        "uniform_full_domain": {
+          "16": 1,
+          "64": 0,
+          "256": 0,
+          "1024": 0,
+          "4096": 0
+        }
+      },
+      "uniform_32_blocks_L256_K": {
+        "min": 0,
+        "max": 0,
+        "mean": 0.0
+      }
+    },
+    {
+      "name": "normalized_15_16",
+      "bits": 16,
+      "A": 15,
+      "D": 16,
+      "rounding_offset": 0,
+      "piecewise": false,
+      "status": "proposed integer implementation",
+      "bound_at_L": {
+        "16": 23339,
+        "64": 1062,
+        "256": 15,
+        "1024": 15,
+        "4096": 15
+      },
+      "bound_plateau_K": 15,
+      "first_L_at_bound_plateau": 139,
+      "ideal_eight_worker_rate_over_clock_at_bound": 0.4444444444444444,
+      "workers_for_two_events_per_clock_at_bound_no_overheads": 36,
+      "synthetic_endpoint_K": {
+        "constant_midpoint": {
+          "16": 23335,
+          "64": 1055,
+          "256": 15,
+          "1024": 15,
+          "4096": 15
+        },
+        "one_tick_random_walk": {
+          "16": 23337,
+          "64": 1053,
+          "256": 0,
+          "1024": 0,
+          "4096": 0
+        },
+        "alternating_rails": {
+          "16": 23336,
+          "64": 1052,
+          "256": 14,
+          "1024": 14,
+          "4096": 14
+        },
+        "uniform_full_domain": {
+          "16": 23335,
+          "64": 1054,
+          "256": 0,
+          "1024": 0,
+          "4096": 0
+        }
+      },
+      "uniform_32_blocks_L256_K": {
+        "min": 0,
+        "max": 0,
+        "mean": 0.0
+      }
+    },
+    {
+      "name": "columbia_61_64",
+      "bits": 17,
+      "A": 61,
+      "D": 64,
+      "rounding_offset": 32,
+      "piecewise": false,
+      "status": "native report/HDL arithmetic reconstruction",
+      "bound_at_L": {
+        "16": 60807,
+        "64": 6079,
+        "256": 21,
+        "1024": 21,
+        "4096": 21
+      },
+      "bound_plateau_K": 21,
+      "first_L_at_bound_plateau": 194,
+      "ideal_eight_worker_rate_over_clock_at_bound": 0.3333333333333333,
+      "workers_for_two_events_per_clock_at_bound_no_overheads": 48,
+      "synthetic_endpoint_K": {
+        "constant_midpoint": {
+          "16": 60799,
+          "64": 6068,
+          "256": 20,
+          "1024": 20,
+          "4096": 20
+        },
+        "one_tick_random_walk": {
+          "16": 60799,
+          "64": 6070,
+          "256": 13,
+          "1024": 0,
+          "4096": 0
+        },
+        "alternating_rails": {
+          "16": 60798,
+          "64": 6068,
+          "256": 8,
+          "1024": 8,
+          "4096": 8
+        },
+        "uniform_full_domain": {
+          "16": 60802,
+          "64": 6070,
+          "256": 0,
+          "1024": 0,
+          "4096": 0
+        }
+      },
+      "uniform_32_blocks_L256_K": {
+        "min": 0,
+        "max": 3,
+        "mean": 0.625
+      }
+    },
+    {
+      "name": "columbia_63_64",
+      "bits": 17,
+      "A": 63,
+      "D": 64,
+      "rounding_offset": 32,
+      "piecewise": false,
+      "status": "native report/HDL arithmetic reconstruction",
+      "bound_at_L": {
+        "16": 101885,
+        "64": 47860,
+        "256": 2357,
+        "1024": 63,
+        "4096": 63
+      },
+      "bound_plateau_K": 63,
+      "first_L_at_bound_plateau": 521,
+      "ideal_eight_worker_rate_over_clock_at_bound": 0.12121212121212122,
+      "workers_for_two_events_per_clock_at_bound_no_overheads": 132,
+      "synthetic_endpoint_K": {
+        "constant_midpoint": {
+          "16": 101877,
+          "64": 47839,
+          "256": 2325,
+          "1024": 63,
+          "4096": 63
+        },
+        "one_tick_random_walk": {
+          "16": 101877,
+          "64": 47839,
+          "256": 2328,
+          "1024": 42,
+          "4096": 0
+        },
+        "alternating_rails": {
+          "16": 101877,
+          "64": 47839,
+          "256": 2326,
+          "1024": 56,
+          "4096": 56
+        },
+        "uniform_full_domain": {
+          "16": 101877,
+          "64": 47840,
+          "256": 2327,
+          "1024": 0,
+          "4096": 0
+        }
+      },
+      "uniform_32_blocks_L256_K": {
+        "min": 2322,
+        "max": 2330,
+        "mean": 2325.90625
+      }
+    },
+    {
+      "name": "columbia_127_128",
+      "bits": 17,
+      "A": 127,
+      "D": 128,
+      "rounding_offset": 64,
+      "piecewise": false,
+      "status": "native report/HDL arithmetic reconstruction",
+      "bound_at_L": {
+        "16": 115620,
+        "64": 79368,
+        "256": 17653,
+        "1024": 127,
+        "4096": 127
+      },
+      "bound_plateau_K": 127,
+      "first_L_at_bound_plateau": 958,
+      "ideal_eight_worker_rate_over_clock_at_bound": 0.06153846153846154,
+      "workers_for_two_events_per_clock_at_bound_no_overheads": 260,
+      "synthetic_endpoint_K": {
+        "constant_midpoint": {
+          "16": 115615,
+          "64": 79347,
+          "256": 17600,
+          "1024": 127,
+          "4096": 127
+        },
+        "one_tick_random_walk": {
+          "16": 115615,
+          "64": 79345,
+          "256": 17599,
+          "1024": 114,
+          "4096": 53
+        },
+        "alternating_rails": {
+          "16": 115612,
+          "64": 79333,
+          "256": 17603,
+          "1024": 126,
+          "4096": 126
+        },
+        "uniform_full_domain": {
+          "16": 115613,
+          "64": 79344,
+          "256": 17597,
+          "1024": 38,
+          "4096": 0
+        }
+      },
+      "uniform_32_blocks_L256_K": {
+        "min": 17592,
+        "max": 17607,
+        "mean": 17599.53125
+      }
+    },
+    {
+      "name": "liquidity_97_100",
+      "bits": 16,
+      "A": 97,
+      "D": 100,
+      "rounding_offset": 0,
+      "piecewise": false,
+      "status": "proposed integer implementation",
+      "bound_at_L": {
+        "16": 40262,
+        "64": 9343,
+        "256": 45,
+        "1024": 33,
+        "4096": 33
+      },
+      "bound_plateau_K": 33,
+      "first_L_at_bound_plateau": 268,
+      "ideal_eight_worker_rate_over_clock_at_bound": 0.2222222222222222,
+      "workers_for_two_events_per_clock_at_bound_no_overheads": 72,
+      "synthetic_endpoint_K": {
+        "constant_midpoint": {
+          "16": 40254,
+          "64": 9329,
+          "256": 33,
+          "1024": 33,
+          "4096": 33
+        },
+        "one_tick_random_walk": {
+          "16": 40255,
+          "64": 9329,
+          "256": 31,
+          "1024": 7,
+          "4096": 0
+        },
+        "alternating_rails": {
+          "16": 40255,
+          "64": 9330,
+          "256": 32,
+          "1024": 32,
+          "4096": 32
+        },
+        "uniform_full_domain": {
+          "16": 40258,
+          "64": 9330,
+          "256": 27,
+          "1024": 0,
+          "4096": 0
+        }
+      },
+      "uniform_32_blocks_L256_K": {
+        "min": 24,
+        "max": 31,
+        "mean": 26.65625
+      }
+    },
+    {
+      "name": "volatility_197_200",
+      "bits": 16,
+      "A": 197,
+      "D": 200,
+      "rounding_offset": 0,
+      "piecewise": false,
+      "status": "proposed integer implementation",
+      "bound_at_L": {
+        "16": 51464,
+        "64": 24931,
+        "256": 1400,
+        "1024": 66,
+        "4096": 66
+      },
+      "bound_plateau_K": 66,
+      "first_L_at_bound_plateau": 495,
+      "ideal_eight_worker_rate_over_clock_at_bound": 0.11594202898550725,
+      "workers_for_two_events_per_clock_at_bound_no_overheads": 138,
+      "synthetic_endpoint_K": {
+        "constant_midpoint": {
+          "16": 51461,
+          "64": 24911,
+          "256": 1369,
+          "1024": 66,
+          "4096": 66
+        },
+        "one_tick_random_walk": {
+          "16": 51461,
+          "64": 24915,
+          "256": 1368,
+          "1024": 45,
+          "4096": 0
+        },
+        "alternating_rails": {
+          "16": 51457,
+          "64": 24909,
+          "256": 1369,
+          "1024": 36,
+          "4096": 36
+        },
+        "uniform_full_domain": {
+          "16": 51459,
+          "64": 24914,
+          "256": 1368,
+          "1024": 0,
+          "4096": 0
+        }
+      },
+      "uniform_32_blocks_L256_K": {
+        "min": 1364,
+        "max": 1371,
+        "mean": 1368.34375
+      }
+    },
+    {
+      "name": "span_10000",
+      "bits": 16,
+      "A": 9999,
+      "D": 10001,
+      "rounding_offset": 0,
+      "piecewise": false,
+      "status": "proposed unadjusted integer variant; not native adjusted float EWMA",
+      "bound_at_L": {
+        "16": 65327,
+        "64": 64726,
+        "256": 62422,
+        "1024": 53884,
+        "4096": 30268
+      },
+      "bound_plateau_K": 5000,
+      "first_L_at_bound_plateau": 15557,
+      "ideal_eight_worker_rate_over_clock_at_bound": 0.0015990405756546072,
+      "workers_for_two_events_per_clock_at_bound_no_overheads": 10006,
+      "synthetic_endpoint_K": {
+        "constant_midpoint": {
+          "16": 65327,
+          "64": 64703,
+          "256": 62207,
+          "1024": 53415,
+          "4096": 28993
+        },
+        "one_tick_random_walk": {
+          "16": 65327,
+          "64": 64703,
+          "256": 62207,
+          "1024": 53414,
+          "4096": 28993
+        },
+        "alternating_rails": {
+          "16": 65326,
+          "64": 64702,
+          "256": 62379,
+          "1024": 53449,
+          "4096": 28998
+        },
+        "uniform_full_domain": {
+          "16": 65326,
+          "64": 64704,
+          "256": 62269,
+          "1024": 53399,
+          "4096": 28882
+        }
+      },
+      "uniform_32_blocks_L256_K": {
+        "min": 62255,
+        "max": 62279,
+        "mean": 62265.71875
+      }
+    },
+    {
+      "name": "illinois_difference_16bit",
+      "bits": 16,
+      "A": 15,
+      "D": 16,
+      "rounding_offset": 0,
+      "piecewise": true,
+      "status": "native documented rule; 16-bit state chosen for experiment",
+      "bound_at_L": {
+        "16": 23350,
+        "64": 1077,
+        "256": 30,
+        "1024": 30,
+        "4096": 30
+      },
+      "bound_plateau_K": 30,
+      "first_L_at_bound_plateau": 139,
+      "ideal_eight_worker_rate_over_clock_at_bound": 0.24242424242424243,
+      "workers_for_two_events_per_clock_at_bound_no_overheads": 66,
+      "synthetic_endpoint_K": {
+        "constant_midpoint": {
+          "16": 23342,
+          "64": 1070,
+          "256": 30,
+          "1024": 30,
+          "4096": 30
+        },
+        "one_tick_random_walk": {
+          "16": 23343,
+          "64": 1068,
+          "256": 13,
+          "1024": 0,
+          "4096": 0
+        },
+        "alternating_rails": {
+          "16": 23336,
+          "64": 1055,
+          "256": 1,
+          "1024": 1,
+          "4096": 1
+        },
+        "uniform_full_domain": {
+          "16": 23341,
+          "64": 1055,
+          "256": 0,
+          "1024": 0,
+          "4096": 0
+        }
+      },
+      "uniform_32_blocks_L256_K": {
+        "min": 0,
+        "max": 0,
+        "mean": 0.0
+      }
+    },
+    {
+      "name": "illinois_difference_32bit",
+      "bits": 32,
+      "A": 15,
+      "D": 16,
+      "rounding_offset": 0,
+      "piecewise": true,
+      "status": "native documented rule; 32-bit state chosen for experiment",
+      "bound_at_L": {
+        "16": 1529326759,
+        "64": 69043323,
+        "256": 311,
+        "1024": 30,
+        "4096": 30
+      },
+      "bound_plateau_K": 30,
+      "first_L_at_bound_plateau": 311,
+      "ideal_eight_worker_rate_over_clock_at_bound": 0.24242424242424243,
+      "workers_for_two_events_per_clock_at_bound_no_overheads": 66,
+      "synthetic_endpoint_K": {
+        "constant_midpoint": {
+          "16": 1529326750,
+          "64": 69043318,
+          "256": 300,
+          "1024": 30,
+          "4096": 30
+        },
+        "one_tick_random_walk": {
+          "16": 1529326752,
+          "64": 69043317,
+          "256": 301,
+          "1024": 8,
+          "4096": 0
+        },
+        "alternating_rails": {
+          "16": 1529326744,
+          "64": 69043303,
+          "256": 289,
+          "1024": 3,
+          "4096": 3
+        },
+        "uniform_full_domain": {
+          "16": 1529326751,
+          "64": 69043301,
+          "256": 285,
+          "1024": 0,
+          "4096": 0
+        }
+      },
+      "uniform_32_blocks_L256_K": {
+        "min": 284,
+        "max": 289,
+        "mean": 286.59375
+      }
+    }
+  ]
+}

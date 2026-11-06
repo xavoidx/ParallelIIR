@@ -2,6 +2,8 @@
 
 Review date: **4 November 2026**. Project: buffered, bit-exact execution of the scalar recurrence `s'=clip(floor((A*s+C)/D))`, with `0<=A<D`, using compact block maps, exact boundary resolution and replay.
 
+**6 November follow-up:** [Financial EWMA and the small-FPGA opportunity](FINANCIAL_EWMA_REVIEW.md) corrects the original finance search's narrow scope. Native rounded financial FPGA EMAs exist, and tick-level liquidity smoothing supplies a useful proposed integer application. The follow-up includes an iCE40UP5K resource/interface audit, actual exchange capacity targets, new exact-integer checks, and a financial RTL roadmap. Buffered replay is a credible starting point; a complete faster-than-clock UP5K advantage remains unmeasured. The fetched `FilterSimulation.py` also fixes the old four-bit clipping defect described below; those original audit findings are historical.
+
 **Recommendation: continue only as a bounded feasibility investigation. The current evidence does not establish a novel, significant, publication-ready result.** There is a plausible specialized implementation question, but much of the original conceptual territory is already occupied. No reviewed application yet demonstrates both matching integer semantics and a system requirement that this approach beats the strongest simpler alternatives on.
 
 The most promising research claim is: *an efficient exact executor for specified quantized contractive recurrences, whose summary construction and scheduling improve a measured throughput, latency or resource tradeoff on a native workload*. Whether that claim is true remains to be tested. The representation alone is unlikely to carry a strong paper.
@@ -10,6 +12,11 @@ The most promising research claim is: *an efficient exact executor for specified
 
 | File | Purpose |
 |---|---|
+| [FINANCIAL_EWMA_REVIEW.md](FINANCIAL_EWMA_REVIEW.md) | Main shareable follow-up: concrete finance applications, faster-than-clock feasibility, new results, reading list and RTL milestones |
+| [FINANCIAL_EWMA_APPLICATIONS.md](FINANCIAL_EWMA_APPLICATIONS.md) | Tick liquidity, price/flow indicators, intensity, datasets and precise workload limitations |
+| [FINANCIAL_EWMA_PRIOR_ART.md](FINANCIAL_EWMA_PRIOR_ART.md) | Native rounded financial arithmetic, piecewise extension, existing FPGA finance and implementation contracts |
+| [FINANCIAL_EWMA_FPGA.md](FINANCIAL_EWMA_FPGA.md) | Verified UP5K resources, timing distinctions, interfaces, memory banking and fair baselines |
+| [financial_ewma_checks.py](financial_ewma_checks.py) and [results](financial_ewma_results.json) | Reproducible integer inverse/map/replay checks and synthetic normalized-EWMA width characterization |
 | [COLLABORATOR_BRIEF.md](COLLABORATOR_BRIEF.md) | Self-contained email attachment consolidating the review, prioritized reading and an RTL learning roadmap |
 | [PRIOR_ART.md](PRIOR_ART.md) | Closest exact-map, FSM, saturation, coupling, ordered-map and inverse-composition precedents; claim-by-claim novelty assessment |
 | [FILTER_LITERATURE.md](FILTER_LITERATURE.md) | Classic and current recursive filtering, compiler and finite-precision comparisons; necessary baselines and venue fit |
@@ -44,6 +51,7 @@ These are candidates for experiments, not demonstrated wins. Their value is that
 | AMR-WB `Deemph2` | Inspected 16-bit primitive reduces to `A=22282,D=32768,C=16384*x+16384`; native weighted-speech call has 256 samples | Strongest exactness motivation: standardized bit-exact code and conformance vectors | Different inspected source revisions must be unified; 12.8 ksample/s and independent calls make throughput significance weak |
 | UKUI exponential blur | Native fixed-point integer recurrence on buffered byte images | Concrete scalar arithmetic and realistic complete image pipeline | Need target-platform signed shift and frozen coefficient; rows/channels already parallel; compatibility need and rate target unproven |
 | SiPM detector emulation | Three positive-pole banks; published feedback timing problem and look-ahead implementation | Strongest physical fast-stream lead | Internal rounded-state contract missing; existing solution works; buffering allowance and benefit remain unknown |
+| Financial EMA replay and quote-liquidity smoothing (6 November follow-up) | Native 17-bit rounded FPGA price EMAs; published quote-time liquidity EWMA at .97 retention | Concrete exact arithmetic benchmark plus useful proposed financial feature; captured data allow buffered replay | Need real-tape K/rate measurements, precision validation for new integer ports, and an advantage over shift/add, unrolling and symbol interleaving |
 
 The codec lead comes from [AOSP source](https://android.googlesource.com/platform/frameworks/av/%2B/dd833ba601e642d72da2200a2fd9c3fa1cb69d2d/media/module/codecs/amrwb/enc/src/deemph.c) and [ITU's bit-exact implementation description](https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=13429). Its mathematical reduction, mixed-revision limitation and test vectors are documented in the application review. The blur lead comes from [UKUI's packaged source](https://sources.debian.org/src/ukui-session-manager/1.1.3.1-1/ukui-session/gsm-blur.c). The physical lead is the [SiPM emulator preprint](https://arxiv.org/html/2607.00841v1).
 
@@ -53,7 +61,7 @@ For usefulness, distinguish three questions: does the arithmetic fit; does anyon
 
 ## What the new checks establish
 
-The WIP's nominal 16-bit model clips every update to `[-8,7]`. For `[100,0,0]` at `a=1/2`, it produces `[7,3,1]`, whereas the intended 16-bit result is `[100,50,25]`. Serial/parallel equality can therefore hide a shared reference error. Tests also omit +7 from the four-bit alphabet and draw only nonnegative random inputs. See the source-linked audit before interpreting current results.
+The **4 November version** of the WIP's nominal 16-bit model clipped every update to `[-8,7]`. For `[100,0,0]` at `a=1/2`, it produced `[7,3,1]`, whereas the intended 16-bit result was `[100,50,25]`. Serial/parallel equality could therefore hide a shared reference error. The fetched `FilterSimulation.py` now uses configured state bounds. Other historical audit findings and recorded results remain in the source-linked audit; this follow-up is not a full re-audit of the updated implementation.
 
 An independent exact-integer implementation passed 47,352 entry-state comparisons, 300 composition cases and 4,782 replay-output comparisons in the documented finite test suite. Separately, the codec arithmetic reduction passed 524,288 primitive-model comparisons. Neither result is hardware equivalence or native application conformance.
 
