@@ -22,7 +22,7 @@ architecture rtl of block_LOAD_tb is
     signal done : std_logic;
     type test_samples_t is array (natural range <>) of unsigned(BITS-1 downto 0);
     constant test_samples : test_samples_t := (
-        x"1", x"2", x"3", x"4", x"5", x"6", x"7", x"8", x"9", x"A", x"B", x"C"
+        x"0", x"1", x"2", x"3", x"4", x"5", x"6", x"7", x"8", x"9", x"A", x"B", x"C", x"D", x"E", x"F"
     );
 
 begin
@@ -45,8 +45,8 @@ begin
         );
 
     clk <= not clk after 5 ns;
-    wr_L <= test_samples(idx mod 12);
-    wr_H <= test_samples(idx mod 12);
+    wr_L <= test_samples(idx mod test_samples'length);
+    wr_H <= test_samples(idx mod test_samples'length);
 
     process(clk) begin
         if rising_edge(clk) then
@@ -65,11 +65,17 @@ begin
         end if; 
 
         wait until done = '0';
+        cmd <= NONE;
+
         wait until done = '1';
         wait until rising_edge(clk);
         wait until rising_edge(clk);
+        cmd <= BUILD; 
         wait until rising_edge(clk);
-
+        cmd <= LOAD;
+        wait until done = '1'; 
+        wait until done = '0'; 
+        wait until done = '1'; 
 
         report "simulation ended successfully";
         finish;
