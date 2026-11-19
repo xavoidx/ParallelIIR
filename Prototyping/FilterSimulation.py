@@ -10,6 +10,16 @@ class ParallelFilter:
         self.maxState = 2**(bits-1)-1 
         self.minState = -1 * 2**(bits-1)
 
+    def serialPassEWMA_FP(self, x: list, s_0: int = 0, p = 1/2):
+                state = s_0
+                y = []
+                for input in x:
+                    state = max(-2**(self.bits-1), min(2**(self.bits-1)-1, math.floor(self.a*state + (1-self.a)*int(input) + p)))
+                    y.append(state)
+                output_state = state
+    
+                return y 
+
     def serialPass(self, x: list, s_0: int = 0):
             state = s_0
             y = []

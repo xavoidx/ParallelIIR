@@ -1,4 +1,4 @@
-from FilterSimulation import ParallelFilter
+from Prototyping.FilterSimulation import ParallelFilter
 import math
 import random
 
