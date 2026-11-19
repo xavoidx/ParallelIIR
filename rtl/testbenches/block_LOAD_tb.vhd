@@ -11,6 +11,9 @@ architecture rtl of block_LOAD_tb is
     
     constant L : positive := 10;
     constant H : positive := 5;
+    constant A : positive := 61;
+    constant D : positive := 64;
+    constant p : positive := D / 2;
     constant BITS : positive := 4;
     constant IS_FIRST : boolean := true; 
     signal clk : std_logic := '0';
@@ -31,6 +34,9 @@ begin
         generic map (
             L => L,
             H => H,
+            A => A,
+            D => D,
+            p => p,
             BITS => BITS,
             IS_FIRST => IS_FIRST
         )
@@ -63,10 +69,9 @@ begin
         if done = '1' then
             cmd <= LOAD;
         end if; 
-
         wait until done = '0';
         cmd <= NONE;
-
+        
         wait until done = '1';
         wait until rising_edge(clk);
         wait until rising_edge(clk);

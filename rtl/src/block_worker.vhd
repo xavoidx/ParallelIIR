@@ -7,6 +7,7 @@ entity block_worker is
     generic (
         L, H : positive;
         BITS : positive;
+        A, D, p : positive;
         IS_FIRST : boolean
     );
     port (
@@ -38,19 +39,29 @@ entity block_worker is
 end entity;
 
 architecture rtl of block_worker is
+    --FSM SIGNALS--
     signal state, next_state : block_state := IDLE;
     signal count, next_count : integer := 0; 
+
+    constant L_addr_width : positive := clog2(L);
+    constant H_addr_width : positive := clog2(H);
+    --BUFFER LOADING SIGNALS--
     signal Lbuf_we, Lbuf_en, Hbuf_we, Hbuf_en: std_logic := '0';
     signal Hbuf1_we, Hbuf1_en : std_logic := '0';
     signal Hbuf2_we, Hbuf2_en : std_logic := '0'; --Only for first block
-    signal Hbuf_demux, next_Hbuf_demux : std_logic := '0';
-    constant L_addr_width : positive := clog2(L);
-    constant H_addr_width : positive := clog2(H);
+    signal Hbuf_demux_r, Hbuf_demux_n : std_logic := '0';
     signal L_raddr, L_waddr : unsigned(L_addr_width-1 downto 0);
     signal H_raddr, H_waddr : unsigned(H_addr_width-1 downto 0); 
 
+
     constant H_start : positive := L - H;
-    
+    signal smin : unsigned(BITS-1 downto 0) := (others => '0');
+    signal smax : unsigned(BITS-1 downto 0) := (others => '1');
+    signal s_n, s_r : unsigned(BITS-1 downto 0) := (others => '0');
+
+    signal SE_s_entry, SE_s_out, SE_x_in : unsigned(BITS-1 downto 0); 
+    signal SE_in_valid, SE_ld, SE_en, SE_rst_n, SE_out_valid : std_logic; 
+
 begin
     
     L_buffer : entity work.sample_buf
@@ -104,9 +115,9 @@ begin
         ); 
     end generate; 
 
-    process(Hbuf_demux, Hbuf_en, Hbuf_we) begin
+    process(Hbuf_demux_r, Hbuf_en, Hbuf_we) begin
         if IS_FIRST = true then
-            if Hbuf_demux = '0' then
+            if Hbuf_demux_r = '0' then
                 Hbuf1_en <= Hbuf_en;
                 Hbuf1_we <= Hbuf_we;
             else
@@ -119,6 +130,26 @@ begin
         end if;
     end process;
 
+    SE1 : entity work.serial_executor
+        generic map (
+            A => A, Dlog2 => clog2(D), BITS => BITS, p => p
+        )
+        port map (
+            clk => clk, s_entry => SE_s_entry, x_in => SE_x_in,
+            in_valid => SE_in_valid, ld => SE_ld, en => SE_en, rst_n => SE_rst_n,
+            s_out => SE_s_out, out_valid => SE_out_valid
+        );
+
+    SE2 : entity work.serial_executor
+        generic map (
+            A => A, Dlog2 => clog2(D), BITS => BITS, p => p
+        )
+        port map (
+            clk => clk, s_entry => SE_s_entry, x_in => SE_x_in,
+            in_valid => SE_in_valid, ld => SE_ld, en => SE_en, rst_n => SE_rst_n,
+            s_out => SE_s_out, out_valid => SE_out_valid
+        );
+
     process(all) begin
 
         --DEFAULTS--
@@ -130,6 +161,8 @@ begin
         busy <= '0'; done <= '0';
         load_ready <= '0';
         Lbuf_we <= '0'; Lbuf_en <= '0'; Hbuf_we <= '0'; Hbuf_en <= '0';
+        Hbuf_demux_n <= Hbuf_demux_r;
+
         case state is
 
             --Cmd pulse interpretter
@@ -144,7 +177,7 @@ begin
                         next_state <= REPLAY;
                         next_count <= 0;
                     when BUILD =>
-                        next_Hbuf_demux <= not Hbuf_demux;
+                        Hbuf_demux_n <= not Hbuf_demux_r;
                         next_state <= BUILD;
                         next_count <= 0;
                     when others => 
@@ -170,16 +203,23 @@ begin
                     next_count <= count + 1;
                     next_state <= LOAD;
                 elsif count < L then 
-                        next_count <= count + 1;
-                        next_state <= LOAD;
-                        Hbuf_we <= '1'; 
+                    next_count <= count + 1;
+                    next_state <= LOAD;
+                    Hbuf_we <= '1'; 
                 elsif count = L then
-                        load_ready <= '0';
-                        Lbuf_we <= '0'; 
-                        Hbuf_we <= '0'; 
-                        next_state <= IDLE;
+                    load_ready <= '0';
+                    Lbuf_we <= '0'; 
+                    Hbuf_we <= '0'; 
+                    next_state <= IDLE;
                 end if;
+            when BUILD =>
+                --Certify the rails
+                    --Loop through H twice
+                    --Call func on state, input
 
+
+                --Build shared base rank table
+                
             when others => next_state <= IDLE; 
         end case;
     end process;
@@ -191,7 +231,8 @@ begin
             else
                 state <= next_state;
                 count <= next_count;
-                Hbuf_demux <= next_Hbuf_demux;
+                Hbuf_demux_r <= Hbuf_demux_n;
+                s_r <= s_n;
             end if;
         end if; 
     end process;
