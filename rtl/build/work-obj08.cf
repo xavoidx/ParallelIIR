@@ -1,19 +1,19 @@
 v 4
-file "/Users/owenroush/Projects/ParallelIIR/rtl/" "packages/parallel_iir.vhd" "b3d55201a8712069ca3513e75ed520f3cbe206e7" "20261119164137.319":
+file "/Users/owenroush/Projects/ParallelIIR/rtl/" "packages/parallel_iir.vhd" "65850da1d9d0a00c3114acef3e1fa15903b16a7a" "20261124190959.086":
   package parallel_iir at 1( 0) + 0 on 17 body;
-  package body parallel_iir at 12( 275) + 0 on 18;
-file "/Users/owenroush/Projects/ParallelIIR/rtl/" "src/sample_buf.vhd" "da65db17f8c9ff4adf5d7f1fbdd87a10a0d247cb" "20261119164137.340":
+  package body parallel_iir at 12( 293) + 0 on 18;
+file "/Users/owenroush/Projects/ParallelIIR/rtl/" "src/sample_buf.vhd" "db27c570bd79180d9586a002fe60cf8477425650" "20261124190959.148":
   entity sample_buf at 1( 0) + 0 on 19;
   architecture rtl of sample_buf at 20( 475) + 0 on 20;
-file "/Users/owenroush/Projects/ParallelIIR/rtl/" "src/serial_executor.vhd" "2a2cf8a712326cef7aae3e43d94c8ec8c1e7a2d9" "20261119164137.387":
+file "/Users/owenroush/Projects/ParallelIIR/rtl/" "src/serial_executor.vhd" "cfd14e240c3292ebc280be66bc88fb945702ce4e" "20261124190959.200":
   entity serial_executor at 1( 0) + 0 on 21;
   architecture rtl of serial_executor at 21( 506) + 0 on 22;
-file "/Users/owenroush/Projects/ParallelIIR/rtl/" "src/block_worker.vhd" "3509d03630570b67db0e1f173e8712b41f30d36f" "20261119164137.437":
+file "/Users/owenroush/Projects/ParallelIIR/rtl/" "src/block_worker.vhd" "14cf0e51a614a297a91b515decc53adc3e0d10e5" "20261124190959.250":
   entity block_worker at 1( 0) + 0 on 23;
-  architecture rtl of block_worker at 41( 990) + 0 on 24;
+  architecture rtl of block_worker at 42( 1018) + 0 on 24;
 file "/Users/owenroush/Projects/ParallelIIR/rtl/" "testbenches/serial_executor_tb.vhd" "db2e97614edb8cee6bc8c0ae6a180211f3cb4aa7" "20261119164133.831":
   entity serial_executor_tb at 1( 0) + 0 on 15;
   architecture rtl of serial_executor_tb at 10( 157) + 0 on 16;
-file "/Users/owenroush/Projects/ParallelIIR/rtl/" "testbenches/block_LOAD_tb.vhd" "3302a3f5d8c784c3538427ab5b8b44d28f4558de" "20261119164137.561":
+file "/Users/owenroush/Projects/ParallelIIR/rtl/" "testbenches/block_LOAD_tb.vhd" "357fe7451513bb11945d7b046573394a2db3c080" "20261124190959.451":
   entity block_load_tb at 1( 0) + 0 on 25;
   architecture rtl of block_load_tb at 10( 151) + 0 on 26;

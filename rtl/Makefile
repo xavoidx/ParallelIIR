@@ -20,7 +20,7 @@ $(WAVES):
 
 block_load_tb : $(BUILD)/block_load_tb \
 	| $(BUILD) $(WAVES)
-	$(BUILD)/$@ --stop-time=10us --wave=$(WAVES)/$@.ghw
+	$(BUILD)/$@ --stop-time=600ns --wave=$(WAVES)/$@.ghw
 
 $(BUILD)/block_load_tb : $(PACKAGES) $(SRCS) $(LOAD_TB_SRCS) | $(BUILD)
 	$(GHDL) -i $(STD) --workdir=$(BUILD) $^

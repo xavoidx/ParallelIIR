@@ -20,7 +20,7 @@ end entity;
 architecture rtl of sample_buf is
     type ram_t is array (0 to DEPTH-1) 
         of unsigned(DATA_WIDTH-1 downto 0);
-    signal ram : ram_t;
+    signal ram : ram_t := (others => (others => '0'));
     attribute ram_style : string;
     attribute ram_style of ram : signal is "block";
     signal r0, r1 : unsigned(DATA_WIDTH-1 downto 0);

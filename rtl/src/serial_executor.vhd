@@ -40,6 +40,8 @@ begin
                         if c_valid = '1' then
                             acc <= shift_right(to_unsigned(A, Dlog2) * acc + c, Dlog2)(BITS-1 downto 0);
                             out_valid <= '1';
+                        else
+                            out_valid <= '0';
                         end if;
                     end if;
                 end if;

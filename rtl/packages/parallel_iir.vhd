@@ -4,7 +4,7 @@ use IEEE.numeric_std.all;
 
 package Parallel_IIR is
     type cmd_t is (REPLAY, BUILD, LOAD, NONE); --Command strobe
-    type block_state is (REPLAY, BUILD, LOAD, IDLE);
+    type block_state is (REPLAY, BUILD_CERT, BUILD_TABLE, LOAD, IDLE);
     function clog2(n : positive) return natural;
 
 end package;

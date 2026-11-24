@@ -8,6 +8,7 @@ entity block_worker is
         L, H : positive;
         BITS : positive;
         A, D, p : positive;
+        RD_LAT : positive; 
         IS_FIRST : boolean
     );
     port (
@@ -39,29 +40,44 @@ entity block_worker is
 end entity;
 
 architecture rtl of block_worker is
+
+    --TYPES--
+    subtype data is unsigned(BITS-1 downto 0);
+    type data_vec_t is array (natural range <>) of data;
+
+    --CONSTANTS--
+    constant L_addr_width : positive := clog2(L);
+    constant H_addr_width : positive := clog2(H);
+    constant H_start : positive := L - H;
+
     --FSM SIGNALS--
     signal state, next_state : block_state := IDLE;
     signal count, next_count : integer := 0; 
+    signal addr_count_r, addr_count_n : integer := 0; 
 
-    constant L_addr_width : positive := clog2(L);
-    constant H_addr_width : positive := clog2(H);
     --BUFFER LOADING SIGNALS--
     signal Lbuf_we, Lbuf_en, Hbuf_we, Hbuf_en: std_logic := '0';
     signal Hbuf1_we, Hbuf1_en : std_logic := '0';
     signal Hbuf2_we, Hbuf2_en : std_logic := '0'; --Only for first block
+    signal Hbuf1_rdata, Hbuf2_rdata : data; 
     signal Hbuf_demux_r, Hbuf_demux_n : std_logic := '0';
-    signal L_raddr, L_waddr : unsigned(L_addr_width-1 downto 0);
-    signal H_raddr, H_waddr : unsigned(H_addr_width-1 downto 0); 
+    signal Lbuf_raddr, Lbuf_waddr : unsigned(L_addr_width-1 downto 0);
+    signal Hbuf_raddr, Hbuf_waddr : unsigned(H_addr_width-1 downto 0); 
+    signal Hbuf_rdata, Lbuf_rdata : data; 
 
+    constant smin : data := (others => '0');
+    constant smax : data := (others => '1');
+    signal s_n, s_r : data := (others => '0');
+    
+    --SERIAL EXECUTOR SIGNALS--
+    signal SE_s_entry, SE_s_out, SE_x_in : data_vec_t(0 to 1); 
+    signal SE_in_valid, SE_ld, SE_en, SE_rst_n, SE_out_valid : std_logic_vector(1 downto 0); 
 
-    constant H_start : positive := L - H;
-    signal smin : unsigned(BITS-1 downto 0) := (others => '0');
-    signal smax : unsigned(BITS-1 downto 0) := (others => '1');
-    signal s_n, s_r : unsigned(BITS-1 downto 0) := (others => '0');
-
-    signal SE_s_entry, SE_s_out, SE_x_in : unsigned(BITS-1 downto 0); 
-    signal SE_in_valid, SE_ld, SE_en, SE_rst_n, SE_out_valid : std_logic; 
-
+    --MAP BUILDING SIGNALS--
+    signal l_n, l_r, h_n, h_r : data;
+    signal rd_valid_sr_n, rd_valid_sr_r  : std_logic_vector(RD_LAT-1 downto 0) := (others => '0');
+    signal Hbuf_rd_issue : std_logic := '0';
+    
 begin
     
     L_buffer : entity work.sample_buf
@@ -73,10 +89,10 @@ begin
             clk => clk,
             we => Lbuf_we,
             en => Lbuf_en,
-            waddr => L_waddr, 
-            raddr => L_raddr, 
-            wdata => wr_L
-            -- ... --
+            waddr => Lbuf_waddr, 
+            raddr => Lbuf_raddr, 
+            wdata => wr_L,
+            rdata => Lbuf_rdata
         );
 
     H_buffer : entity work.sample_buf
@@ -88,10 +104,10 @@ begin
             clk => clk,
             we => Hbuf1_we,
             en => Hbuf1_en,
-            waddr => H_waddr,
-            raddr => H_raddr,
-            wdata => wr_H
-            -- ... --
+            waddr => Hbuf_waddr,
+            raddr => Hbuf_raddr,
+            wdata => wr_H,
+            rdata => Hbuf1_rdata
         );
     
     --The first block has a second H-buffer so it can store 
@@ -108,46 +124,49 @@ begin
             clk => clk,
             we => Hbuf2_we,
             en => Hbuf2_en,
-            waddr => H_waddr,
-            raddr => H_raddr,
-            wdata => wr_H
-            -- ... --
+            waddr => Hbuf_waddr,
+            raddr => Hbuf_raddr,
+            wdata => wr_H,
+            rdata => Hbuf2_rdata
         ); 
     end generate; 
 
-    process(Hbuf_demux_r, Hbuf_en, Hbuf_we) begin
+    process(Hbuf_demux_r, Hbuf_en, Hbuf_we, Hbuf1_rdata, Hbuf2_rdata) begin
         if IS_FIRST = true then
             if Hbuf_demux_r = '0' then
                 Hbuf1_en <= Hbuf_en;
                 Hbuf1_we <= Hbuf_we;
+                Hbuf_rdata <= Hbuf1_rdata; 
             else
                 Hbuf2_en <= Hbuf_en;
                 Hbuf2_we <= Hbuf_we;
+                Hbuf_rdata <= Hbuf2_rdata; 
             end if;
         else
             Hbuf1_en <= Hbuf_en;
             Hbuf1_we <= Hbuf_we;
+            Hbuf_rdata <= Hbuf1_rdata; 
         end if;
     end process;
+
+    SE0 : entity work.serial_executor
+        generic map (
+            A => A, Dlog2 => clog2(D), BITS => BITS, p => p
+        )
+        port map (
+            clk => clk, s_entry => SE_s_entry(0), x_in => SE_x_in(0),
+            in_valid => SE_in_valid(0), ld => SE_ld(0), en => SE_en(0), rst_n => SE_rst_n(0),
+            s_out => SE_s_out(0), out_valid => SE_out_valid(0)
+        );
 
     SE1 : entity work.serial_executor
         generic map (
             A => A, Dlog2 => clog2(D), BITS => BITS, p => p
         )
         port map (
-            clk => clk, s_entry => SE_s_entry, x_in => SE_x_in,
-            in_valid => SE_in_valid, ld => SE_ld, en => SE_en, rst_n => SE_rst_n,
-            s_out => SE_s_out, out_valid => SE_out_valid
-        );
-
-    SE2 : entity work.serial_executor
-        generic map (
-            A => A, Dlog2 => clog2(D), BITS => BITS, p => p
-        )
-        port map (
-            clk => clk, s_entry => SE_s_entry, x_in => SE_x_in,
-            in_valid => SE_in_valid, ld => SE_ld, en => SE_en, rst_n => SE_rst_n,
-            s_out => SE_s_out, out_valid => SE_out_valid
+            clk => clk, s_entry => SE_s_entry(1), x_in => SE_x_in(1),
+            in_valid => SE_in_valid(1), ld => SE_ld(1), en => SE_en(1), rst_n => SE_rst_n(1),
+            s_out => SE_s_out(1), out_valid => SE_out_valid(1)
         );
 
     process(all) begin
@@ -160,9 +179,17 @@ begin
         --q_ok <= '0';
         busy <= '0'; done <= '0';
         load_ready <= '0';
+
+        --BUFFER DEFAULTS--
         Lbuf_we <= '0'; Lbuf_en <= '0'; Hbuf_we <= '0'; Hbuf_en <= '0';
         Hbuf_demux_n <= Hbuf_demux_r;
 
+        --SE DEFAULTS--
+        SE_rst_n <= (others => '0'); SE_en <= (others => '0'); SE_ld <= (others => '0'); SE_in_valid <= (others => '0');
+        
+        --MAP BUILDING DEFAULTS--
+        h_n <= h_r; l_n <= l_r;
+        
         case state is
 
             --Cmd pulse interpretter
@@ -173,13 +200,16 @@ begin
                     when LOAD =>
                         next_state <= LOAD;
                         next_count <= 0;
+                        addr_count_n <= 0;
                     when REPLAY =>
                         next_state <= REPLAY;
                         next_count <= 0;
+                        addr_count_n <= 0;
                     when BUILD =>
                         Hbuf_demux_n <= not Hbuf_demux_r;
-                        next_state <= BUILD;
+                        next_state <= BUILD_CERT;
                         next_count <= 0;
+                        addr_count_n <= 0;
                     when others => 
                         next_state <= state;
                 end case;
@@ -187,23 +217,24 @@ begin
             when LOAD =>
                 done <= '0';
                 busy <= '1'; 
-
-                --Attach L_waddr TO couunt
-                L_waddr <= to_unsigned(count, L_addr_width); 
+                --Attach L_waddr TO count
+                Lbuf_waddr <= to_unsigned(addr_count_r, L_addr_width); 
                 Lbuf_we <= '1'; 
                 
                 --Attach H_waddr to count + H - L
                 if count + H - L >= 0 then
-                    H_waddr <= to_unsigned(count + H - L, H_addr_width); 
+                    Hbuf_waddr <= to_unsigned(addr_count_r + H - L, H_addr_width); 
                 end if;
                 --Begin transmitting samples from mem_scheduler
                 load_ready <= '1';
 
                 if count < H_start then
                     next_count <= count + 1;
+                    addr_count_n <= addr_count_r + 1; 
                     next_state <= LOAD;
                 elsif count < L then 
                     next_count <= count + 1;
+                    addr_count_n <= addr_count_r + 1; 
                     next_state <= LOAD;
                     Hbuf_we <= '1'; 
                 elsif count = L then
@@ -212,14 +243,35 @@ begin
                     Hbuf_we <= '0'; 
                     next_state <= IDLE;
                 end if;
-            when BUILD =>
-                --Certify the rails
-                    --Loop through H twice
-                    --Call func on state, input
 
+            when BUILD_CERT =>
 
-                --Build shared base rank table
-                
+                done <= '0';
+                busy <= '1'; 
+                SE_x_in(0) <= Hbuf_rdata;
+                SE_x_in(1) <= Hbuf_rdata;
+                Hbuf_raddr <= to_unsigned(addr_count_r, H_addr_width);
+                SE_rst_n <= (others => '1'); 
+
+                addr_count_n <= addr_count_r + 1 when addr_count_r < H - 1  else addr_count_r;  
+                Hbuf_rd_issue <= '1' when addr_count_r < H - 1 else '0';
+                rd_valid_sr_n <= rd_valid_sr_r(RD_LAT-2 downto 0) & Hbuf_rd_issue;
+                Hbuf_en <= '1';
+                SE_in_valid <= (others => rd_valid_sr_r(RD_LAT-1)); 
+                    
+                SE_s_entry(0) <= smin;
+                SE_s_entry(1) <= smax; 
+                SE_en <= (others => '1');
+                SE_ld <= (others => '1') when count = 0 else (others => '0');
+                next_count <= 1;
+                l_n <= SE_s_out(0) when SE_out_valid(0) = '1' else l_r;
+                h_n <= SE_s_out(1) when SE_out_valid(1) = '1' else h_r;
+
+                next_state <= BUILD_TABLE when 
+                    (Hbuf_rd_issue = '0') and
+                    (SE_out_valid = (SE_out_valid'range => '0')) and
+                    (rd_valid_sr_r = (rd_valid_sr_r'range => '0'))
+                else BUILD_CERT;
             when others => next_state <= IDLE; 
         end case;
     end process;
@@ -231,8 +283,12 @@ begin
             else
                 state <= next_state;
                 count <= next_count;
+                addr_count_r <= addr_count_n;
                 Hbuf_demux_r <= Hbuf_demux_n;
+                rd_valid_sr_r <= rd_valid_sr_n;
                 s_r <= s_n;
+                l_r <= l_n;
+                h_r <= h_n;
             end if;
         end if; 
     end process;
