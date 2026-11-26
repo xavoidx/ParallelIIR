@@ -1,0 +1,941 @@
+{
+  "extensionVersion": "1.6.1",
+  "fileName": "/Users/owenroush/Projects/ParallelIIR/rtl/waves/block_load_tb.ghw",
+  "markerTime": 95000000,
+  "altMarkerTime": null,
+  "displayTimeUnit": "ns",
+  "selectedSignal": {
+    "name": "block_load_tb.block_worker_dut.q_exit_r",
+    "msb": 3,
+    "lsb": 0
+  },
+  "zoomRatio": 0.000002975601363136667,
+  "scrollLeft": 13963672,
+  "defaultPixelTime": 10000000,
+  "displayedSignals": [
+    {
+      "dataType": "signal-group",
+      "groupName": "HBuf",
+      "collapseState": 1,
+      "children": [
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 146,
+          "name": "[7]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "h_buffer",
+            "ram"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[7]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 139,
+          "name": "[0]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "h_buffer",
+            "ram"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[0]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 140,
+          "name": "[1]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "h_buffer",
+            "ram"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[1]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 141,
+          "name": "[2]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "h_buffer",
+            "ram"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[2]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 142,
+          "name": "[3]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "h_buffer",
+            "ram"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[3]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 143,
+          "name": "[4]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "h_buffer",
+            "ram"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[4]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 144,
+          "name": "[5]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "h_buffer",
+            "ram"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[5]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 145,
+          "name": "[6]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "h_buffer",
+            "ram"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[6]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        }
+      ]
+    },
+    {
+      "dataType": "signal-group",
+      "groupName": "LBuf",
+      "collapseState": 1,
+      "children": [
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 129,
+          "name": "[9]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "l_buffer",
+            "ram"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[9]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 120,
+          "name": "[0]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "l_buffer",
+            "ram"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[0]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 121,
+          "name": "[1]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "l_buffer",
+            "ram"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[1]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 122,
+          "name": "[2]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "l_buffer",
+            "ram"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[2]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 123,
+          "name": "[3]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "l_buffer",
+            "ram"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[3]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 124,
+          "name": "[4]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "l_buffer",
+            "ram"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[4]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 125,
+          "name": "[5]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "l_buffer",
+            "ram"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[5]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 126,
+          "name": "[6]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "l_buffer",
+            "ram"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[6]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 127,
+          "name": "[7]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "l_buffer",
+            "ram"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[7]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 128,
+          "name": "[8]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "l_buffer",
+            "ram"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[8]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        }
+      ]
+    },
+    {
+      "dataType": "signal-group",
+      "groupName": "FSM",
+      "collapseState": 1,
+      "children": [
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 24,
+          "name": "addr_count_r",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut"
+          ],
+          "numberFormat": "decimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "addr_count_r",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 22,
+          "name": "count",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut"
+          ],
+          "numberFormat": "decimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "count",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 10,
+          "name": "cmd",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut"
+          ],
+          "numberFormat": "enum",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "cmd",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 20,
+          "name": "state",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut"
+          ],
+          "numberFormat": "enum",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "state",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        }
+      ]
+    },
+    {
+      "dataType": "signal-group",
+      "groupName": "Rank Table",
+      "collapseState": 1,
+      "children": [
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 59,
+          "name": "l_r",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "l_r",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 61,
+          "name": "h_r",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "h_r",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 88,
+          "name": "[0]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[0]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 89,
+          "name": "[1]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[1]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 90,
+          "name": "[2]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[2]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 91,
+          "name": "[3]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[3]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 92,
+          "name": "[4]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[4]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 93,
+          "name": "[5]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[5]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 94,
+          "name": "[6]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[6]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 95,
+          "name": "[7]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[7]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 96,
+          "name": "[8]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[8]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 97,
+          "name": "[9]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[9]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 98,
+          "name": "[10]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[10]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 99,
+          "name": "[11]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[11]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 100,
+          "name": "[12]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[12]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 101,
+          "name": "[13]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[13]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 102,
+          "name": "[14]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[14]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 103,
+          "name": "[15]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[15]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 104,
+          "name": "[16]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[16]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 105,
+          "name": "[17]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[17]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 106,
+          "name": "[18]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[18]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 107,
+          "name": "[19]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[19]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 108,
+          "name": "[20]",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut",
+            "offset_map_r"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "[20]",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        }
+      ]
+    },
+    {
+      "dataType": "signal-group",
+      "groupName": "Table Lookup",
+      "collapseState": 1,
+      "children": [
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 110,
+          "name": "q_exit_r",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "q_exit_r",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 18,
+          "name": "q_ok",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut"
+          ],
+          "numberFormat": "binary",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "q_ok",
+          "renderType": "binary",
+          "valueLinkEnable": false
+        },
+        {
+          "dataType": "netlist-variable",
+          "netlistId": 16,
+          "name": "q_entry",
+          "scopePath": [
+            "block_load_tb",
+            "block_worker_dut"
+          ],
+          "numberFormat": "hexadecimal",
+          "colorIndex": 0,
+          "rowHeight": 1,
+          "verticalScale": 1,
+          "nameType": "fullPath",
+          "customName": "q_entry",
+          "renderType": "multiBit",
+          "valueLinkEnable": false
+        }
+      ]
+    },
+    {
+      "dataType": "netlist-variable",
+      "netlistId": 0,
+      "name": "clk",
+      "scopePath": [
+        "block_load_tb"
+      ],
+      "numberFormat": "binary",
+      "colorIndex": 0,
+      "rowHeight": 2,
+      "verticalScale": 1,
+      "nameType": "fullPath",
+      "customName": "clk",
+      "renderType": "binary",
+      "valueLinkEnable": false
+    }
+  ]
+}

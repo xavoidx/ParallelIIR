@@ -14,6 +14,7 @@ entity serial_executor is
         in_valid : in std_logic;
         ld, en, rst_n : in std_logic;
         s_out : out unsigned(BITS-1 downto 0) := (others => '0'); 
+        r : out unsigned(Dlog2-1 downto 0);
         out_valid: out std_logic := '0'
     );
 end entity;
@@ -25,7 +26,9 @@ architecture rtl of serial_executor is
     constant D : positive := 2**Dlog2; 
     constant m : positive := D - A;
 begin
-    process(clk) begin
+    process(clk) 
+        variable num : unsigned(BITS+Dlog2-1 downto 0);
+    begin
         if(rising_edge(clk)) then
             if rst_n = '0' then
                 acc <= (others => '0');
@@ -38,7 +41,9 @@ begin
                         c <= to_unsigned(m, Dlog2) * x_in + to_unsigned(p, Dlog2);
                         c_valid <= in_valid;
                         if c_valid = '1' then
-                            acc <= shift_right(to_unsigned(A, Dlog2) * acc + c, Dlog2)(BITS-1 downto 0);
+                            num := to_unsigned(A, Dlog2) * acc + c;
+                            acc <= shift_right(num, Dlog2)(BITS-1 downto 0);
+                            r <= num(Dlog2-1 downto 0);
                             out_valid <= '1';
                         else
                             out_valid <= '0';
